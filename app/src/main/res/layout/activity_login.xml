@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="16dp"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to IDEA,"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_below="@id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="32dp">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            android:layout_height="match_parent"
+            android:hint="Enter your email"
+            android:textSize="20sp"
+            android:background="@drawable/rounded"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:inputType="textPassword"
+            android:layout_height="match_parent"
+            android:hint="Enter your password"
+            android:textSize="20sp"
+            android:background="@drawable/rounded"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+        </EditText>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Login"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:textSize="16sp">
+        </com.google.android.material.button.MaterialButton>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="24dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+        </ProgressBar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/form"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account? Register"
+            android:textStyle="bold"
+            android:id="@+id/register">
+
+        </TextView>
+    </LinearLayout>
+</RelativeLayout>
