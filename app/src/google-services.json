@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13450997293",
+    "project_id": "assignment3-a6ca7",
+    "storage_bucket": "assignment3-a6ca7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13450997293:android:3f02c11e6ec97995b6d2a4",
+        "android_client_info": {
+          "package_name": "rmit.ad.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13450997293-lq60301obpepajs82rps0v9mu4k5ksl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB70lJOjM0xBldUShEsn9KYOA9Qkt6sLDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13450997293-lq60301obpepajs82rps0v9mu4k5ksl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
