@@ -16,7 +16,6 @@
         android:layout_marginRight="5dp" >
 
         <ImageView
-            android:id="@+id/menu"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentLeft="true"
@@ -87,13 +86,12 @@
             android:id="@+id/searchBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:hint="What are you looking for?"
-            android:minHeight="48dp" />
+            android:hint="What are you looking for?" />
 
     </LinearLayout>
 
