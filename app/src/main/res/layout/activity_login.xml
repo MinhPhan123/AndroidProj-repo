@@ -102,7 +102,6 @@
             android:text="Don't have an account? Register"
             android:textStyle="bold"
             android:id="@+id/register">
-
         </TextView>
     </LinearLayout>
 </RelativeLayout>
