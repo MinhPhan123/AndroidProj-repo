@@ -66,12 +66,7 @@ public class Profile extends AppCompatActivity {
 
         //get the avatar
         StorageReference profileReference = FirebaseStorage.getInstance().getReference().child("user_ava/"+userID+"/profile.jpg");
-//        profileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Picasso.get().load(uri).into(avatar);
-//            }
-//        });
+
 
         try {
             final File localFile = File.createTempFile("avatar","jpg");
@@ -119,9 +114,15 @@ public class Profile extends AppCompatActivity {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //open the gallery to pic the image
-                Intent openGalleryIntent  = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent,100);
+
+                Intent i = new Intent(view.getContext(),EditProfile.class);
+                //pass the data
+                i.putExtra("full_name",full_name.getText().toString());
+                i.putExtra("email",email.getText().toString());
+                i.putExtra("dob",dob.getText().toString());
+                i.putExtra("address",address.getText().toString());
+                i.putExtra("phone_number",phone_number.getText().toString());
+                startActivity(i);
             }
         });
 
@@ -168,45 +169,6 @@ public class Profile extends AppCompatActivity {
         });
     }
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 100){
-            if(resultCode == Activity.RESULT_OK){
-                //get the Uri of the image
-                Uri imageUri = data.getData();
-                //avatar.setImageURI(imageUri);
-
-                uploadImageToFirebase(imageUri);
-            }
-        }
-    }
-
-
-    //function to upload the photo on Firebase
-    private void uploadImageToFirebase(Uri imageUri){
-        //upload the avatar to Firebase
-        StorageReference fileRef = storageReference.child("user_ava/"+userID+"/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //Utility.showToast(Profile.this,"Image has been uploaded");
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(avatar);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Utility.showToast(Profile.this,"Image has not been uploaded" + e.getLocalizedMessage());
-            }
-        });
-    }
 
     //function for logout
     public void logout(View view){
