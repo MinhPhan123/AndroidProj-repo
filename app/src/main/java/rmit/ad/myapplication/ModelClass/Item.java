@@ -2,6 +2,9 @@ package rmit.ad.myapplication.ModelClass;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
     private String ID;
     private String name;
@@ -10,10 +13,11 @@ public class Item {
     private double discount;
     private String description;
     private int stockQuantity;
-    private Bitmap image;
-    private String color;
+    private List<Bitmap> image;
+    private List<String> color;
 
-    public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity, Bitmap image, String color) {
+    //Constructor
+    public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity) {
         this.ID = ID;
         this.name = name;
         this.category = category;
@@ -21,8 +25,8 @@ public class Item {
         this.discount = discount;
         this.description = description;
         this.stockQuantity = stockQuantity;
-        this.image = image;
-        this.color = color;
+        image = new ArrayList<>();
+        color = new ArrayList<>();
     }
 
     public String getID() {
@@ -81,19 +85,19 @@ public class Item {
         this.stockQuantity = stockQuantity;
     }
 
-    public Bitmap getImage() {
+    public List<Bitmap> getImage() {
         return image;
     }
 
-    public void setImage(Bitmap image) {
+    public void setImage(List<Bitmap> image) {
         this.image = image;
     }
 
-    public String getColor() {
+    public List<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(List<String> color) {
         this.color = color;
     }
 }
