@@ -101,8 +101,18 @@
             android:layout_height="wrap_content"
             android:text="Don't have an account? Register"
             android:textStyle="bold"
-            android:id="@+id/register">
+            android:id="@+id/register"
+            android:textSize="20dp">
+        </TextView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget your password?"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:id="@+id/reset"
+            android:textSize="16dp">
         </TextView>
     </LinearLayout>
 </RelativeLayout>
