@@ -30,6 +30,7 @@
         android:src="@drawable/furniture1">
 
     </ImageView>
+
     <ProgressBar
         android:layout_width="24dp"
         android:layout_height="24dp"

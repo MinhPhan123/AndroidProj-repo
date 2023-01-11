@@ -112,6 +112,7 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
+
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override

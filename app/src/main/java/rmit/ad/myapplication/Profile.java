@@ -21,8 +21,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -52,22 +58,27 @@ public class Profile extends AppCompatActivity {
 
     String userID;
 
+    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+    GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
+        gsc = GoogleSignIn.getClient(this,gso);
 
         //get the current user
         user = firebaseAuth.getCurrentUser();
+
         //fetch the data from firebase
         userID = firebaseAuth.getUid();          //get the user id that has been created automatically by firebase
         DocumentReference documentReference = firestore.collection("user").document(userID);
-
-        //get the avatar
+        //get the avatar of a specific user
         StorageReference profileReference = FirebaseStorage.getInstance().getReference().child("user_ava/"+userID+"/profile.jpg");
 
 
+        // to fetch data image data in Storage (FIREBASE)
         try {
             final File localFile = File.createTempFile("avatar","jpg");
             profileReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -94,19 +105,17 @@ public class Profile extends AppCompatActivity {
         dob = findViewById(R.id.User_dob);
         address = findViewById(R.id.User_address);
         phone_number = findViewById(R.id.User_phone);
-
         updateProfile = findViewById(R.id.update);
-
 
         //fetch and display the data
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                full_name.setText(documentSnapshot.getString("full_name"));
-                email.setText(documentSnapshot.getString("email"));
-                dob.setText(documentSnapshot.getString("dob"));
-                address.setText(documentSnapshot.getString("address"));
-                phone_number.setText(documentSnapshot.getString("phone_number"));
+                full_name.setText(documentSnapshot != null ? documentSnapshot.getString("full_name") : null);
+                email.setText(documentSnapshot != null ? documentSnapshot.getString("email") : null);
+                dob.setText(documentSnapshot != null ? documentSnapshot.getString("dob") : null);
+                address.setText(documentSnapshot != null ? documentSnapshot.getString("address") : null);
+                phone_number.setText(documentSnapshot != null ? documentSnapshot.getString("phone_number") : null);
             }
         });
 
@@ -123,6 +132,7 @@ public class Profile extends AppCompatActivity {
                 i.putExtra("address",address.getText().toString());
                 i.putExtra("phone_number",phone_number.getText().toString());
                 startActivity(i);
+                finish();
             }
         });
 
@@ -172,10 +182,8 @@ public class Profile extends AppCompatActivity {
 
     //function for logout
     public void logout(View view){
-        FirebaseAuth.getInstance().signOut();
+        gsc.signOut();                                          //google sign out
+        FirebaseAuth.getInstance().signOut();                   //email password sign out
         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
-
-
 }
-
