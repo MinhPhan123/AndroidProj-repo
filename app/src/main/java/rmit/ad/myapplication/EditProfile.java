@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -124,6 +125,12 @@ public class EditProfile extends AppCompatActivity implements DatePickerDialog.O
                         ||profileDOB.getText().toString().isEmpty()||profileAddress.getText().toString().isEmpty()){
                     Toast.makeText(EditProfile.this,"Can not leave empty flied",Toast.LENGTH_SHORT).show();
                     return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    profileEmail.setError("Email is invalid");
+                }
+                if (!Patterns.PHONE.matcher(phone_number).matches()) {
+                    profilePhone.setError("Phone is invalid");
                 }
 
                 String email = profileEmail.getText().toString();

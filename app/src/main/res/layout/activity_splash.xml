@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tertiary_color"
+    android:background="@color/primary_color"
     tools:context=".SplashActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:text="IKEA"
         android:gravity="center"
         android:textStyle="bold"/>
@@ -34,7 +35,7 @@
     <ProgressBar
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:indeterminateTint="@color/primary_color"
+        android:indeterminateTint="@color/white"
         android:layout_gravity="center"
         android:layout_margin="16dp">
 
