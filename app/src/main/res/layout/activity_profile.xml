@@ -9,19 +9,19 @@
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="150dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/black_bound"
-        app:srcCompat="@drawable/avatar"
-        tools:srcCompat="@drawable/avatar" />
+        app:srcCompat="@drawable/loading"
+        tools:srcCompat="@drawable/loading" />
 
     <LinearLayout
-        android:layout_below="@+id/avatar"
         android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/avatar"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="5dp"
         android:orientation="vertical"
@@ -30,6 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -216,10 +217,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/form"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/form">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/update"
@@ -237,8 +239,8 @@
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:onClick="logout"/>
+            android:onClick="logout"
+            android:text="Logout" />
     </LinearLayout>
 
 
