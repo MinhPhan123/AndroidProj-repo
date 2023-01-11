@@ -46,7 +46,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
-
+//profile activity
 public class Profile extends AppCompatActivity {
     ImageView avatar;
     TextView full_name,email,dob,address,phone_number;

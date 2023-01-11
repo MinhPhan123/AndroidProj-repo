@@ -43,9 +43,6 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     String userID;
 
-//    boolean normalSignIn = false;
-//    boolean googleSignIn = false;
-//    boolean facebookSignIn = false;
     EditText emailEditText, passwordEditText;
     Button loginBtn;
     ImageButton googleBtn, facebookBtn;
@@ -156,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Authentication (FIREBASE) via Google
     private void firebaseAuthWithGoogle(String idToken) {
                     AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
                     firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -176,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         //finish();
         if(user!=null){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);         //when merging change to MainActivity();
+            Intent intent = new Intent(getApplicationContext(),Profile.class);         //when merging change to MainActivity();
             startActivity(intent);}
 
     }

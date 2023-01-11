@@ -167,7 +167,6 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         Calendar cal = new GregorianCalendar(year, month, day);
         setDate(cal);
-
     }
 
 

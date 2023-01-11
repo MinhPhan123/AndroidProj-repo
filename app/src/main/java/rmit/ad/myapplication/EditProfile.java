@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +14,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -31,10 +33,13 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     EditText profileName, profileEmail, profilePhone, profileDOB,profileAddress;
     ImageView profileImage;
     Button saveUpdate;
@@ -77,10 +82,12 @@ public class EditProfile extends AppCompatActivity {
         profilePhone.setText(phone_number);
         profileDOB.setText(dob);
         profileAddress.setText(address);
+
         //get the avatar
         StorageReference profileReference = FirebaseStorage.getInstance().getReference().child("user_ava/"+userID+"/profile.jpg");
 
 
+        //get the photo from user gallery
         try {
             final File localFile = File.createTempFile("avatar","jpg");
             profileReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -106,6 +113,10 @@ public class EditProfile extends AppCompatActivity {
                 startActivityForResult(openGalleryIntent,100);
         });
 
+
+
+
+        //updating function
         saveUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,6 +170,11 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
+    public void datePicker(View view) {
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.show(getSupportFragmentManager(), "date picker");
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,4 +211,17 @@ public class EditProfile extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        Calendar cal = new GregorianCalendar(year, month, day);
+        setDate(cal);
+    }
+
+    public void setDate(final Calendar calendar){
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        profileDOB.setText(dateFormat.format(calendar.getTime()));
+    }
+
+
 }
