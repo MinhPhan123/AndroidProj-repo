@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Get the data from Google account
-        /*GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null) {
             String google_name = account.getDisplayName();
             String google_mail = account.getEmail();
             createAccountInFireBase(google_name,google_mail);
-        }*/
+        }
 
     }
 
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        */
 
-    //}
+
+    }
 }

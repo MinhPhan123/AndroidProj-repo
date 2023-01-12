@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1072765946502",
+    "firebase_url": "https://androidproj-12477-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "androidproj-12477",
     "storage_bucket": "androidproj-12477.appspot.com"
   },
@@ -19,14 +20,6 @@
           "android_info": {
             "package_name": "rmit.ad.myapplication",
             "certificate_hash": "049bd5e02781452e896d5565b36c336a1534c206"
-          }
-        },
-        {
-          "client_id": "1072765946502-vnboelgvns8k7pc1h8hjgsb77i7t51sp.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "rmit.ad.myapplication",
-            "certificate_hash": "781a60e0879bd60f126869ce54870047548a3236"
           }
         },
         {
