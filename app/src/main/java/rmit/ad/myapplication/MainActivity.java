@@ -42,25 +42,18 @@ public class MainActivity extends AppCompatActivity {
             createAccountInFireBase(google_name,google_mail);
         }
 
-//        menu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,Profile.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
 
     // check if the data of this google user is exits - then no need to create the data in cloud firestore
-    // else create a new user using google fullness and email
+    // else create a new user using google fullname and email
     private void createAccountInFireBase(String google_name, String google_mail) {
+
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-
+        userID = firebaseAuth.getUid();
         //https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
 
-        userID = firebaseAuth.getUid();
         DocumentReference documentReference = firestore.collection("user").document(userID);
 
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -71,13 +64,25 @@ public class MainActivity extends AppCompatActivity {
                     if(documentSnapshot.exists()){
                         //do nothing
                     } else {
+                        userID = firebaseAuth.getUid();
+                        DocumentReference documentReference = firestore.collection("user").document(userID);
                         Map<String, Object> user = new HashMap<>();
                         user.put("email", google_mail);
                         user.put("full_name", google_name);
                         user.put("dob", null);
                         user.put("phone_number", null);
                         user.put("address", null);
-                        Log.d("TAG", "onSuccess: user profile is created for" + userID);
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d("TAG", "onSuccess: user profile is created for" + userID);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure: " + e.toString());
+                            }
+                        });
                     }
                 } else {
                     Log.d(TAG, "onFailure: ");

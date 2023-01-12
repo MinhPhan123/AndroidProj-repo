@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         //finish();
         if(user!=null){
-            Intent intent = new Intent(getApplicationContext(),Profile.class);         //when merging change to MainActivity();
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);         //when merging change to MainActivity();
             startActivity(intent);}
 
     }
