@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Get the data from Google account
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        /*GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null) {
             String google_name = account.getDisplayName();
             String google_mail = account.getEmail();
             createAccountInFireBase(google_name,google_mail);
-        }
+        }*/
 
 //        menu.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     // check if the data of this google user is exits - then no need to create the data in cloud firestore
     // else create a new user using google fullness and email
-    private void createAccountInFireBase(String google_name, String google_mail) {
+    /*private void createAccountInFireBase(String google_name, String google_mail) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        */
 
-
-    }
+    //}
 }
