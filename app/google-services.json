@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1072765946502-h1cdlq1m14n9raldelfclhm36dhiqu2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rmit.ad.myapplication",
+            "certificate_hash": "049bd5e02781452e896d5565b36c336a1534c206"
+          }
+        },
+        {
           "client_id": "1072765946502-vnboelgvns8k7pc1h8hjgsb77i7t51sp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
