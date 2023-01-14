@@ -13,8 +13,9 @@ public class Item {
     private double discount;
     private String description;
     private int stockQuantity;
-    private List<Bitmap> image;
+    private List<Image> image;
     private List<String> color;
+    private String selectedColor;
 
     //Constructor
     public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity) {
@@ -85,11 +86,11 @@ public class Item {
         this.stockQuantity = stockQuantity;
     }
 
-    public List<Bitmap> getImage() {
+    public List<Image> getImage() {
         return image;
     }
 
-    public void setImage(List<Bitmap> image) {
+    public void setImage(List<Image> image) {
         this.image = image;
     }
 
@@ -99,5 +100,13 @@ public class Item {
 
     public void setColor(List<String> color) {
         this.color = color;
+    }
+
+    public String getSelectedColor() {
+        return selectedColor;
+    }
+
+    public void setSelectedColor(String selectedColor) {
+        this.selectedColor = selectedColor;
     }
 }
