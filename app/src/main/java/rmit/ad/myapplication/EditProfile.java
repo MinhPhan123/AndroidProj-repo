@@ -101,7 +101,7 @@ public class EditProfile extends AppCompatActivity implements DatePickerDialog.O
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Utility.showToast(EditProfile.this,"Error occurred");
+                    //Utility.showToast(EditProfile.this,"Error occurred");
                 }
             });
         } catch (IOException e) {
@@ -129,10 +129,6 @@ public class EditProfile extends AppCompatActivity implements DatePickerDialog.O
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     profileEmail.setError("Email is invalid");
                 }
-                if (!Patterns.PHONE.matcher(phone_number).matches()) {
-                    profilePhone.setError("Phone is invalid");
-                }
-
                 String email = profileEmail.getText().toString();
                 String full_name = profileName.getText().toString();
                 String dob = profileDOB.getText().toString();

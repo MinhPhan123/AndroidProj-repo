@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -28,6 +29,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -40,7 +44,9 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
     Button create_accountBtn;
     ProgressBar processBar;
     TextView loginTextView;
+    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     String userID;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +129,8 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
                             Utility.showToast(RegisterActivity.this, "Your account has been successfully created. Please check your email for validation");
                             userID = firebaseAuth.getUid();
                             DocumentReference documentReference = firestore.collection("user").document(userID);
+                            StorageReference fileRef = storageReference.child("user_ava/"+userID+"/profile.jpg");
+                            fileRef.putFile(imageUri);
                             Map<String, Object> user = new HashMap<>();
                             user.put("email", email);
                             user.put("full_name", full_name);
