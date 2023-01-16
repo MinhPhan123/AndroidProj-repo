@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ViewItemDetail"
+    tools:context=".ViewItemDetailActivity"
     android:orientation="vertical">
 
 
@@ -62,6 +62,19 @@
                 android:text="s0001">
             </TextView>
 
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="100 $"
+                android:textColor="#C0392B"
+                android:textSize="20sp"
+                android:textStyle="bold">
+            </TextView>
+
+
             <!-- text view of item category -->
             <TextView
                 android:id="@+id/item_category"
@@ -70,7 +83,7 @@
                 android:paddingStart="10dp"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                android:text="Category: Sofa">
+                android:text="Category">
             </TextView>
 
             <!-- text view of item discount -->
@@ -81,7 +94,7 @@
                 android:paddingStart="10dp"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                android:text="Discount 10%">
+                android:text="Discount">
             </TextView>
 
             <!-- text view of item stock quantity -->
@@ -92,7 +105,7 @@
                 android:paddingStart="10dp"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                android:text="Stock quantity: 100">
+                android:text="Stock quantity">
             </TextView>
 
             <LinearLayout
@@ -113,13 +126,62 @@
                     android:id="@+id/color_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Description"
+                android:textColor="#000000"
+                android:textSize="16sp">
+            </TextView>
 
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#000000"
+                android:justificationMode="inter_word"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:textSize="12sp"
+                tools:targetApi="o">
+            </TextView>
 
+            <Button
+                android:id="@+id/toggle_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginStart="10dp"
+                android:text="Show More"
+                android:textSize="12sp"
+                android:onClick="toggleDescription" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Quantity"
+                android:textColor="#000000"
+                android:textSize="16sp">
+            </TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp">
+                <include layout="@layout/tool_bar" />
+            </RelativeLayout>
 
         </LinearLayout>
 
