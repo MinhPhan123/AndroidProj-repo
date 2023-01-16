@@ -4,13 +4,18 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -18,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,7 +34,12 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     String userID;
-//    ImageView menu = (ImageView)findViewById(R.id.menu);
+    private ImageView bed, cabinet, chair, clock, desk, sofa, menu;
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +53,89 @@ public class MainActivity extends AppCompatActivity {
             createAccountInFireBase(google_name,google_mail);
         }
 
+        //Navigation drawer declare
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        menu = (ImageView) findViewById(R.id.menu);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+
+
+
+        //Check category press
+        bed = (ImageView) findViewById(R.id.bed);
+        cabinet = (ImageView) findViewById(R.id.cabinet);
+        chair = (ImageView) findViewById(R.id.chair);
+        clock = (ImageView) findViewById(R.id.clock);
+        desk = (ImageView) findViewById(R.id.desk);
+        sofa = (ImageView) findViewById(R.id.sofa);
+
+        //Start activity base on category for the item list display
+        bed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "bed");
+                startActivity(intent);
+            }
+        });
+
+        cabinet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "cabinet");
+                startActivity(intent);
+            }
+        });
+
+        chair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "chair");
+                startActivity(intent);
+            }
+        });
+
+        clock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "clock");
+                startActivity(intent);
+            }
+        });
+
+        desk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "desk");
+                startActivity(intent);
+            }
+        });
+
+        sofa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, ItemList.class);
+                intent.putExtra("category", "sofa");
+                startActivity(intent);
+            }
+        });
     }
 
 
