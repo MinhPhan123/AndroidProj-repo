@@ -44,7 +44,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         Picasso.get().load(item.getImage().get(0))
                 .into(holder.product_image);
         holder.product_title.setText(item.getName());
-        holder.product_description.setText(String.valueOf(item.getPrice()));
+        holder.product_description.setText("$ "+String.valueOf(item.getPrice()));
     }
 
     @Override
