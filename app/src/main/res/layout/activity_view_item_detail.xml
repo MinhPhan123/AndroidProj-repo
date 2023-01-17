@@ -1,9 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ViewItemDetailActivity">
+    android:layout_height="wrap_content"
+    tools:context=".ViewItemDetailActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Scroll view of the whole screen -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fillViewport="true"
+        tools:ignore="SpeakableTextPresentCheck"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- LinearLayout contains attributes of an item -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/empty_tall_divider_vertical">
+
+            <!-- viewpager to display images of item -->
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <!-- text view of item name -->
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="Item name">
+            </TextView>
+
+            <!-- text view of item ID -->
+            <TextView
+                android:id="@+id/item_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:text="Item ID">
+            </TextView>
+
+            <!-- text view of item price -->
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Item price"
+                android:textColor="#C0392B"
+                android:textSize="20sp"
+                android:textStyle="bold">
+            </TextView>
+
+
+            <!-- text view of item category -->
+            <TextView
+                android:id="@+id/item_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="Category">
+            </TextView>
+
+            <!-- text view of item discount -->
+            <TextView
+                android:id="@+id/item_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="Discount">
+            </TextView>
+
+            <!-- text view of item stock quantity -->
+            <TextView
+                android:id="@+id/item_stock_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="Stock quantity">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:text="Choose color:">
+                </TextView>
+
+                <Spinner
+                    android:id="@+id/color_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Description"
+                android:textColor="#000000"
+                android:textSize="16sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#000000"
+                android:justificationMode="inter_word"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:textSize="12sp"
+                tools:targetApi="o">
+            </TextView>
+
+            <Button
+                android:id="@+id/toggle_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginStart="10dp"
+                android:text="Show More"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                tools:ignore="HardcodedText,SmallSp"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Quantity"
+                android:textColor="#000000"
+                android:textSize="16sp">
+            </TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp">
+                <include layout="@layout/tool_bar" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

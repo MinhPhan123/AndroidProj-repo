@@ -82,6 +82,13 @@ public class ItemList extends AppCompatActivity {
 
         EventChangeListener();
 
+        //Send the intent of item arraylist to ViewItemDetailActivity
+        Intent intent = new Intent(ItemList.this, ViewItemDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("itemArrayList", itemArrayList);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
     }
 
     private void EventChangeListener()
