@@ -91,7 +91,7 @@ public class Profile extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Utility.showToast(Profile.this,"Error occurred");
+                        //Utility.showToast(Profile.this,"Error occurred");
                     }
                 });
         } catch (IOException e) {

@@ -14,8 +14,8 @@
         android:layout_marginStart="140dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/black_bound"
-        app:srcCompat="@drawable/loading"
-        tools:srcCompat="@drawable/loading" />
+        app:srcCompat="@drawable/avatar"
+        tools:srcCompat="@drawable/avatar" />
 
     <LinearLayout
         android:id="@+id/form"

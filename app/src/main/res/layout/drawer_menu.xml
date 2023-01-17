@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/purple_500">
+        android:background="@color/primary_color">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,8 +20,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Home"
-                android:textColor="@color/black"
+                android:text="HOME"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:textSize="30sp" />
         </LinearLayout>
 
@@ -30,7 +31,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="profile">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -50,12 +52,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="chatbox"
+>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/chat"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,20 +72,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="logout">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/logout"
             android:paddingTop="10dp"/>
         <TextView
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Log Out"
             android:textSize="30sp"
             android:textColor="#000"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+/>
     </LinearLayout>
 
 </LinearLayout>
