@@ -12,6 +12,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -76,10 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-
-
-
+        
         //Check category press
         bed = (ImageView) findViewById(R.id.bed);
         cabinet = (ImageView) findViewById(R.id.cabinet);
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "bed");
+                intent.putExtra("category", "Beds");
                 startActivity(intent);
             }
         });
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "cabinet");
+                intent.putExtra("category", "Cabinets");
                 startActivity(intent);
             }
         });
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "chair");
+                intent.putExtra("category", "Chairs");
                 startActivity(intent);
             }
         });
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "clock");
+                intent.putExtra("category", "Clocks");
                 startActivity(intent);
             }
         });
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "desk");
+                intent.putExtra("category", "Desks");
                 startActivity(intent);
             }
         });
@@ -144,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
-                intent.putExtra("category", "sofa");
+                intent.putExtra("category", "Sofas");
                 startActivity(intent);
             }
         });
