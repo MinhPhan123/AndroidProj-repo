@@ -25,5 +25,7 @@ public class ItemList extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        FirebaseRecyclerOption<>
     }
 }
