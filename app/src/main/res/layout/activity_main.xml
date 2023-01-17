@@ -4,335 +4,364 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <!--Top Bar -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp" >
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/grey_icon_border"
-            android:padding="8dp"
-            android:src="@drawable/menu" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Home"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Home is where the heart is."
-
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/grey_icon_border"
-                android:padding="8dp"
-                android:src="@drawable/cart" />
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-
-                android:background="@drawable/grey_icon_border"
-                android:padding="8dp"
-                android:src="@drawable/heart" />
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-    <!--Search Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <AutoCompleteTextView
-            android:id="@+id/searchBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:hint="What are you looking for?" />
-
-    </LinearLayout>
-
-    <!--Body Menu -->
-    <ScrollView
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8sp">
+        android:fitsSystemWindows="true"
+        android:id="@+id/drawerLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <!--Online Exclusive -->
-            <LinearLayout
+            <!--Top Bar -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/menu_border"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Online Exclusive"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                android:layout_height="46dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp" >
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:padding="5dp"
-                    android:src="@drawable/onlineex"
-                    android:scaleType="fitXY" />
+                    android:id="@+id/menu"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/grey_icon_border"
+                    android:padding="8dp"
+                    android:src="@drawable/menu" />
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
-            <!--Product Category -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Home"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Home is where the heart is."
+
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/grey_icon_border"
+                        android:padding="8dp"
+                        android:src="@drawable/cart" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+
+                        android:background="@drawable/grey_icon_border"
+                        android:padding="8dp"
+                        android:src="@drawable/heart" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--Search Bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/menu_border"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:padding="8dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Product Categories"
-                    android:textSize="16sp"
-                    android:textColor="@color/black" />
-
-                <TableLayout
+                <AutoCompleteTextView
+                    android:id="@+id/searchBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:hint="What are you looking for?"
+                    android:minHeight="48dp" />
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp">
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/bed"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Beds"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/cabinet"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Cabinets"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp">
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/chair"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Chairs"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/clock"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Clocks"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp">
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/desk"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Desks"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp" >
-
-                            <ImageView
-                                android:layout_width="180dp"
-                                android:layout_height="100dp"
-                                android:background="@drawable/sofa"
-                                android:scaleType="fitXY" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:textSize="24sp"
-                                android:padding="4dp"
-                                android:textColor="@color/white"
-                                android:text="Sofas"
-                                android:background="@color/black_trans"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                />
-
-                        </RelativeLayout>
-
-                    </TableRow>
-
-
-                </TableLayout>
             </LinearLayout>
 
+            <!--Body Menu -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8sp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <!--Online Exclusive -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/menu_border"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Online Exclusive"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:padding="5dp"
+                            android:src="@drawable/onlineex"
+                            android:scaleType="fitXY" />
+
+                    </LinearLayout>
+
+                    <!--Product Category -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/menu_border"
+                        android:orientation="vertical"
+                        android:layout_marginTop="5dp"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Product Categories"
+                            android:textSize="16sp"
+                            android:textColor="@color/black" />
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:layout_marginTop="8dp">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/bed"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/bed"
+                                        android:scaleType="fitXY" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Beds"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/cabinet"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/cabinet"
+                                        android:scaleType="fitXY" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Cabinets"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:layout_marginTop="8dp">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/chair"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/chair"
+                                        android:scaleType="fitXY" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Chairs"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/clock"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/clock"
+                                        android:scaleType="fitXY" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Clocks"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:layout_marginTop="8dp">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/desk"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/desk"
+                                        android:scaleType="fitXY" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Desks"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp" >
+
+                                    <ImageView
+                                        android:id="@+id/sofa"
+                                        android:layout_width="180dp"
+                                        android:layout_height="100dp"
+                                        android:background="@drawable/sofa"
+                                        android:scaleType="fitXY" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:textSize="24sp"
+                                        android:padding="4dp"
+                                        android:textColor="@color/white"
+                                        android:text="Sofas"
+                                        android:background="@color/black_trans"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerHorizontal="true"
+                                        />
+
+                                </RelativeLayout>
+
+                            </TableRow>
+
+
+                        </TableLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
 
-    </ScrollView>
+        <!--Navigation Drawer -->
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/navigationView"
+            app:headerLayout="@layout/drawer_menu">
 
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
-
