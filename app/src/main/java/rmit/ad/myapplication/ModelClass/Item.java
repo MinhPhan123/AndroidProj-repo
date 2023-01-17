@@ -12,11 +12,13 @@ public class Item {
     private double discount;
     private String description;
     private int stockQuantity;
-    private List<Image> image;
-    private List<String> color;
+    private ArrayList<String> image;
+    private ArrayList<String> color;
 
     //Constructor
-    public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity) {
+    public Item() {}
+
+    public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity, ArrayList<String> image, ArrayList<String> color) {
         this.ID = ID;
         this.name = name;
         this.category = category;
@@ -24,79 +26,43 @@ public class Item {
         this.discount = discount;
         this.description = description;
         this.stockQuantity = stockQuantity;
-        image = new ArrayList<>();
-        color = new ArrayList<>();
+        this.image = new ArrayList<>(image);
+        this.color = new ArrayList<>(color);
     }
 
     public String getID() {
         return ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getStockQuantity() {
         return stockQuantity;
     }
 
-    public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
-
-    public List<Image> getImage() {
+    public ArrayList<String> getImage() {
         return image;
     }
 
-    public void setImage(List<Image> image) {
-        this.image = image;
-    }
-
-    public List<String> getColor() {
+    public ArrayList<String> getColor() {
         return color;
-    }
-
-    public void setColor(List<String> color) {
-        this.color = color;
     }
 }
