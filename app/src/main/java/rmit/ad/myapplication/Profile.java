@@ -49,6 +49,7 @@ import java.net.URI;
 //profile activity
 public class Profile extends AppCompatActivity {
     ImageView avatar;
+    ImageView back;
     TextView full_name,email,dob,address,phone_number;
     Button resetPassword, updateProfile;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -106,6 +107,17 @@ public class Profile extends AppCompatActivity {
         address = findViewById(R.id.User_address);
         phone_number = findViewById(R.id.User_phone);
         updateProfile = findViewById(R.id.update);
+
+        //Implementation of back method
+        back = (ImageView) findViewById(R.id.backPro);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(Profile.this, MainActivity.class));
+                finish();
+            }
+        });
 
         //fetch and display the data
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
