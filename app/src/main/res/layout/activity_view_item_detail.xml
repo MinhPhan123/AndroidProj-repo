@@ -108,28 +108,22 @@
                 android:text="Stock quantity">
             </TextView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:paddingStart="10dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="Choose color:">
+            </TextView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:text="Choose color:">
-                </TextView>
+            <RadioGroup
+                android:id="@+id/color_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/color_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"

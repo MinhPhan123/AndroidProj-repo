@@ -5,12 +5,12 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -105,25 +105,19 @@ public class ViewItemDetailActivity extends AppCompatActivity {
                     }
                 });
 
-                //Set up color spinner
-                Spinner colorSpinner = findViewById(R.id.color_spinner);
+                //Set up color selection
                 ArrayList<String> colorList = item.getColor();
-                ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, colorList);
-                colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                colorSpinner.setAdapter(colorAdapter);
-                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        selectedColor = parent.getItemAtPosition(position).toString();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
+                selectColor(colorList);
             }
         }
+
+        AppCompatButton btnAddToCart = findViewById(R.id.add_to_cart_button);
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -136,5 +130,21 @@ public class ViewItemDetailActivity extends AppCompatActivity {
             toggleButton.setText("Show Less");
         }
         isExpanded = !isExpanded;
+    }
+
+    private void selectColor(ArrayList<String> colors) {
+        RadioGroup radioGroup = findViewById(R.id.color_group);
+        radioGroup.removeAllViews();
+        for (String color : colors) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setId(View.generateViewId());
+            radioButton.setText(color);
+            radioButton.setOnClickListener(v -> {
+                RadioButton rb = (RadioButton) v;
+                selectedColor = rb.getText().toString();
+                //do something with the selected color
+            });
+            radioGroup.addView(radioButton);
+        }
     }
 }
