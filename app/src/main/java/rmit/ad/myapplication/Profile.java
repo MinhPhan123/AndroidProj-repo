@@ -47,7 +47,7 @@ import java.io.IOException;
 import java.net.URI;
 
 //profile activity
-public class Profile extends AppCompatActivity {
+public class Profile extends BackgroundActivity {
     ImageView avatar;
     TextView full_name,email,dob,address,phone_number;
     Button resetPassword, updateProfile;

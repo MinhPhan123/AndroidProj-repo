@@ -40,7 +40,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BackgroundActivity {
     String userID;
 
     EditText emailEditText, passwordEditText;

@@ -42,7 +42,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BackgroundActivity {
     String userID;
     Uri imageUri;
     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
