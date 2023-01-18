@@ -99,11 +99,12 @@ public class Chat extends AppCompatActivity {
 //                                Timestamp timestamp = new Timestamp(d);
                                 Date date = new Date(timestamp.getTime());
 
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy ", Locale.getDefault());
                                 SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm aa", Locale.getDefault());
 
                                 ChatList chatList = new ChatList(getUserID,getFullname,getMsg,simpleDateFormat.format(date), simpleTimeFormat.format(date));
                                 chatLists.add(chatList);
+
                                 if (loadingFirstTime||Long.parseLong(messageTimestamps) > Long.parseLong(MemoryData.getLastMsgTS(Chat.this, chatKey))) {
                                     loadingFirstTime = false;
                                     MemoryData.saveLastMsgTS(messageTimestamps, chatKey, Chat.this);
