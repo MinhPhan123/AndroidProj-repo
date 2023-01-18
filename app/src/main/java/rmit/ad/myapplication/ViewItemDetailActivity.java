@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import rmit.ad.myapplication.Adapter.ImageViewPagerAdapter;
 import rmit.ad.myapplication.ModelClass.Item;
 
 public class ViewItemDetailActivity extends AppCompatActivity {
+    ArrayList<Item> itemArrayList;
     TextView itemDescriptionText;
     int selectedQuantity = 0;
     String selectedColor;
@@ -32,16 +35,19 @@ public class ViewItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_item_detail);
 
-        ArrayList<Item> itemList = this.getIntent().getExtras().getParcelableArrayList("itemArrayList");
+        itemArrayList = new ArrayList<>();
         itemID = getIntent().getStringExtra("itemID");
 
-        for (Item item : itemList) {
+
+        for (Item item : itemArrayList) {
             if (item.getID().equals(itemID)) {
 
                 //Set up viewpager for image slider
                 ViewPager viewPager = findViewById(R.id.view_pager_image);
-                ImageViewPagerAdapter imageViewPagerAdapter = new ImageViewPagerAdapter(itemList);
+                ArrayList<String> imageList = item.getImage();
+                ImageViewPagerAdapter imageViewPagerAdapter = new ImageViewPagerAdapter(this, imageList);
                 viewPager.setAdapter(imageViewPagerAdapter);
+                viewPager.setCurrentItem(0);
 
                 //Set up the name of the item
                 TextView itemNameText = findViewById(R.id.item_name);
@@ -126,7 +132,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void toggleDescription() {
+    public void toggleDescription() {
         if (isExpanded) {
             itemDescriptionText.setMaxLines(5);
             toggleButton.setText("Show More");
@@ -137,7 +143,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
         isExpanded = !isExpanded;
     }
 
-    private void selectColor(ArrayList<String> colors) {
+    public void selectColor(ArrayList<String> colors) {
         RadioGroup radioGroup = findViewById(R.id.color_group);
         radioGroup.removeAllViews();
         for (String color : colors) {
@@ -152,4 +158,6 @@ public class ViewItemDetailActivity extends AppCompatActivity {
             radioGroup.addView(radioButton);
         }
     }
+
+
 }

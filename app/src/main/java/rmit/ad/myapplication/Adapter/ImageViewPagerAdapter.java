@@ -9,46 +9,39 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
-import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
 
 public class ImageViewPagerAdapter extends PagerAdapter {
 
-    ArrayList<Item> itemArrayList;
+    ArrayList<String> imageList;
+    Context context;
+    LayoutInflater layoutInflater;
 
-    public ImageViewPagerAdapter(ArrayList<Item> itemArrayList) {
-        this.itemArrayList = itemArrayList;
+    public ImageViewPagerAdapter(Context context, ArrayList<String> imageList) {
+        this.context = context;
+        this.imageList = imageList;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        Item item = itemArrayList.get(position);
-        ArrayList<String> imageList = item.getImage();
-        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_image, container, false);
-        for (String image : imageList) {
-            ImageView imageView = view.findViewById(R.id.image_item);
-            Picasso.get().load(image).into(imageView);
-            container.addView(view);
-        }
-
+        View view = layoutInflater.inflate(R.layout.item_image, container, false);
+        ImageView imageView = view.findViewById(R.id.image_item);
+        Glide.with(context).load(imageList.get(position)).into(imageView);
+        container.addView(view, 0);
         return view;
     }
 
     @Override
     public int getCount() {
-        if (itemArrayList == null || itemArrayList.size() == 0) {
-            return 0;
+        if (imageList != null) {
+            return imageList.size();
         }
-        int count = 0;
-        for (Item item : itemArrayList) {
-            count += item.getImage().size();
-        }
-        return count;
+        return 0;
     }
 
     @Override
