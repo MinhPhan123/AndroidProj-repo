@@ -16,7 +16,6 @@ import rmit.ad.myapplication.Service.LogOutService;
 public class BackgroundActivity extends AppCompatActivity {
     private BroadcastReceiver mNetworkReceiver;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +36,17 @@ public class BackgroundActivity extends AppCompatActivity {
         return super.dispatchTouchEvent(ev);
     }
 
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
-        stopService(new Intent(this, LogOutService.class));
+        stopService(new Intent(getApplicationContext(), LogOutService.class));
     }
 
     @Override

@@ -194,8 +194,9 @@ public class Profile extends BackgroundActivity {
 
     //function for logout
     public void logout(View view){
-        gsc.signOut();                                          //google sign out
         FirebaseAuth.getInstance().signOut();                   //email password sign out
         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
+
+
 }
