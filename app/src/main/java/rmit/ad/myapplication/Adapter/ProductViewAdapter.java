@@ -1,6 +1,9 @@
 package rmit.ad.myapplication.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import java.util.List;
 
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
+import rmit.ad.myapplication.ViewItemDetailActivity;
 
 public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.ProductViewHolder>
 {
@@ -36,6 +40,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         return new ProductViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductViewAdapter.ProductViewHolder holder, int position)
     {
@@ -44,7 +49,8 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         Picasso.get().load(item.getImage().get(0))
                 .into(holder.product_image);
         holder.product_title.setText(item.getName());
-        holder.product_description.setText("$ "+String.valueOf(item.getPrice()));
+        holder.product_description.setText("$ "+ String.valueOf(item.getPrice()));
+
     }
 
     @Override
@@ -52,7 +58,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         return itemArrayList.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder
+    public class ProductViewHolder extends RecyclerView.ViewHolder
     {
         TextView product_title, product_description;
         ImageView product_image;
@@ -63,9 +69,23 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
             product_title = (TextView) itemView.findViewById(R.id.product_title);
             product_description = (TextView) itemView.findViewById(R.id.product_description);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Item item = itemArrayList.get(position);
+                    Intent intent = new Intent(view.getContext(), ViewItemDetailActivity.class);
+                    //Bundle bundle = new Bundle();
+                    //bundle.putParcelableArrayList("itemArrayList", itemArrayList);
+                    intent.putExtra("item",item);
+                    view.getContext().startActivity(intent);
+                }
+            });
+
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setFilteredList(ArrayList<Item> filteredList)
     {
         this.itemArrayList = filteredList;

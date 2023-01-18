@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -86,13 +87,6 @@ public class ItemList extends AppCompatActivity {
 
         EventChangeListener();
 
-        //Send the intent of item arraylist to ViewItemDetailActivity
-        Intent intent = new Intent(ItemList.this, ViewItemDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("itemArrayList", itemArrayList);
-        intent.putExtras(bundle);
-        startActivity(intent);
-
     }
 
     private void EventChangeListener()
@@ -100,6 +94,7 @@ public class ItemList extends AppCompatActivity {
         db.collection("item").whereEqualTo("category", categoryName).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onComplete(@Nullable Task<QuerySnapshot> task){
 
