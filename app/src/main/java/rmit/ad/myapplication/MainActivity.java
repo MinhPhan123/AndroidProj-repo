@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro7.jpg?alt=media&token=ed6399d8-e49c-44e4-99b3-e691bb33bd0f", ScaleTypes.FIT));
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro8.jpg?alt=media&token=cc47749c-5091-4e4d-9c69-fd81d9e75e41", ScaleTypes.FIT));
 
-
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
         //Navigation drawer declare

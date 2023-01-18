@@ -22,7 +22,8 @@
                 android:layout_height="46dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp" >
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF">
 
                 <ImageView
                     android:id="@+id/menu"
@@ -44,9 +45,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="serif"
                         android:text="Home"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -54,8 +57,8 @@
                         android:layout_gravity="center"
                         android:text="Home is where the heart is."
 
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textColor="@color/black_trans"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -64,6 +67,14 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/grey_icon_border"
+                        android:padding="8dp"
+                        android:src="@drawable/loupe" />
 
                     <ImageView
                         android:layout_width="35dp"
@@ -84,26 +95,6 @@
                 </LinearLayout>
 
             </RelativeLayout>
-
-            <!--Search Bar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <AutoCompleteTextView
-                    android:id="@+id/searchBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:hint="What are you looking for?"
-                    android:minHeight="48dp" />
-
-            </LinearLayout>
 
             <!--Body Menu -->
             <ScrollView
@@ -127,9 +118,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="cursive"
+                            android:gravity="center"
                             android:text="A space where creativity blooms"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <com.denzcoskun.imageslider.ImageSlider
                             android:id="@+id/imageSlider"
@@ -156,9 +150,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="cursive"
                             android:text="Product Categories"
-                            android:textSize="16sp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
                         <TableLayout
                             android:layout_width="match_parent"

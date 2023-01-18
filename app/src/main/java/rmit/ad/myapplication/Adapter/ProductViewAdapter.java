@@ -40,7 +40,6 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
     {
         Item item = itemArrayList.get(position);
 
-        //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/sample_picture%2Fsample1.jpg?alt=media&token=53ef9cb0-f2c2-4d22-b0e6-ad5fed5dec4c")
         Picasso.get().load(item.getImage().get(0))
                 .into(holder.product_image);
         holder.product_title.setText(item.getName());
