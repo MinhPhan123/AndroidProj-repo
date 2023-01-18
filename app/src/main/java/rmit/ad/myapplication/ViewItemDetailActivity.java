@@ -24,6 +24,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
     String selectedColor;
     Button toggleButton;
     boolean isExpanded = false;
+    String itemID;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -32,7 +33,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_item_detail);
 
         ArrayList<Item> itemList = this.getIntent().getExtras().getParcelableArrayList("itemArrayList");
-        String itemID = getIntent().getStringExtra("itemID");
+        itemID = getIntent().getStringExtra("itemID");
 
         for (Item item : itemList) {
             if (item.getID().equals(itemID)) {
@@ -115,7 +116,11 @@ public class ViewItemDetailActivity extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(ViewItemDetailActivity.this, ShoppingCartActivity.class);
+                i.putExtra("itemID", itemID);
+                i.putExtra("itemSelectedColor", selectedColor);
+                i.putExtra("itemSelectedQuantity", selectedQuantity);
+                startActivity(i);
             }
         });
     }
