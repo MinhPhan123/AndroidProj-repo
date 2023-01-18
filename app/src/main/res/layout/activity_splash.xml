@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
+    android:background="@color/tertiary_color"
     tools:context=".SplashActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:text="IKEA"
         android:gravity="center"
         android:textStyle="bold"/>
@@ -31,11 +30,10 @@
         android:src="@drawable/furniture1">
 
     </ImageView>
-
     <ProgressBar
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:indeterminateTint="@color/white"
+        android:indeterminateTint="@color/primary_color"
         android:layout_gravity="center"
         android:layout_margin="16dp">
 

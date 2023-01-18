@@ -8,6 +8,16 @@
     tools:context=".Profile">
 
     <ImageView
+        android:id="@+id/backPro"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/grey_icon_border"
+        android:padding="8dp"
+        android:src="@drawable/back" />
+
+    <ImageView
         android:id="@+id/avatar"
         android:layout_width="130dp"
         android:layout_height="130dp"

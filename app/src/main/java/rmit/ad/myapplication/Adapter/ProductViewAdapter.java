@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
@@ -40,7 +41,6 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
     {
         Item item = itemArrayList.get(position);
 
-        //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/sample_picture%2Fsample1.jpg?alt=media&token=53ef9cb0-f2c2-4d22-b0e6-ad5fed5dec4c")
         Picasso.get().load(item.getImage().get(0))
                 .into(holder.product_image);
         holder.product_title.setText(item.getName());
@@ -64,5 +64,11 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
             product_description = (TextView) itemView.findViewById(R.id.product_description);
 
         }
+    }
+
+    public void setFilteredList(ArrayList<Item> filteredList)
+    {
+        this.itemArrayList = filteredList;
+        notifyDataSetChanged();
     }
 }

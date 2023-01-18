@@ -8,15 +8,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -32,9 +32,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
     GoogleSignInClient gsc;
 
+    ImageSlider imageSlider;
+
     private ImageView bed, cabinet, chair, clock, desk, sofa, menu;
+    ImageView searchIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
@@ -66,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
             createAccountInFireBase(google_name,google_mail);
         }
 
+        //Create a list for images Slide
+        imageSlider = findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro1.jpg?alt=media&token=5260d800-1367-430a-8b55-7a4065103fb2", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro2.jpg?alt=media&token=6293dd5f-9dbe-4323-8bb2-e4e7b659e390", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro3.jpg?alt=media&token=723480e5-1ddb-4a19-9d17-a791743f50ab", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro4.jpg?alt=media&token=066455d6-f048-4e12-b34b-9184a1487c83", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro5.jpg?alt=media&token=cb75f7a3-04bb-4d8b-9d2b-fb79a25890ac", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro6.jpg?alt=media&token=584fcd6e-30cc-4fb9-8d0d-215b9656af43", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro7.jpg?alt=media&token=ed6399d8-e49c-44e4-99b3-e691bb33bd0f", ScaleTypes.FIT));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro8.jpg?alt=media&token=cc47749c-5091-4e4d-9c69-fd81d9e75e41", ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+
         //Navigation drawer declare
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -75,6 +91,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        //Start search activity
+        searchIcon = findViewById(R.id.searchIcon);
+        searchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
             }
         });
         
