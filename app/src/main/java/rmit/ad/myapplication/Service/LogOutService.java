@@ -21,7 +21,7 @@ import rmit.ad.myapplication.LoginActivity;
 import rmit.ad.myapplication.SplashActivity;
 
 public class LogOutService extends Service {
-    private static final long WAIT_TIME = 10*1000;
+    private static final long WAIT_TIME =10000000;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     private Handler handler;

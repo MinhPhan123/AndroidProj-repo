@@ -31,7 +31,6 @@ public class BackgroundActivity extends AppCompatActivity {
         LogOutService service = LogOutService.getInstance();
         if (service != null){
             service.updateTouchEventTime();
-            Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
         }
         return super.dispatchTouchEvent(ev);
     }
