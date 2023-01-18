@@ -50,6 +50,7 @@ public class ItemList extends AppCompatActivity {
             {
                 Intent intent = new Intent(ItemList.this, SearchActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

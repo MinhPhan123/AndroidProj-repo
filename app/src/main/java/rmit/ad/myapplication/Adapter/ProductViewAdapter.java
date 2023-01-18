@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
@@ -63,5 +64,11 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
             product_description = (TextView) itemView.findViewById(R.id.product_description);
 
         }
+    }
+
+    public void setFilteredList(ArrayList<Item> filteredList)
+    {
+        this.itemArrayList = filteredList;
+        notifyDataSetChanged();
     }
 }
