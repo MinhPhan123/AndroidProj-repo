@@ -52,23 +52,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:onClick="chatbox"
->
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/chat"
-            android:paddingTop="10dp" />
+            android:paddingTop="10dp"
+            android:src="@drawable/chat" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact Us"
-            android:textSize="30sp"
-            android:textColor="#000"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            android:text="Contact Us"
+            android:textColor="#000"
+            android:textSize="30sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

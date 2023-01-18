@@ -26,6 +26,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,6 +50,7 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
     ProgressBar processBar;
     TextView loginTextView;
     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+   // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://androidproj-12477-default-rtdb.asia-southeast1.firebasedatabase.app/");
     String userID;
     Uri imageUri;
 
@@ -52,6 +58,8 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        userID = firebaseAuth.getUid();
 
         emailEditText = (EditText) findViewById(R.id.email);
         passwordEditText = (EditText) findViewById(R.id.password);
@@ -88,7 +96,38 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
         if (!isValidated) {
             return;
         }
-        createAccountInFireBase(email, password, full_name, dob, phone_number, address);
+        createAccountInFireBase(email, password, full_name, dob, phone_number, address);   //create data in Cloud Firestore
+
+//        //check if the user has already login
+//        if(MemoryData.getData(this).isEmpty()){
+//
+//        }
+//        //create data in realtime database for chatting function
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.child("users").hasChild(userID)){
+//                    Toast.makeText(RegisterActivity.this,"Email already exits", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    databaseReference.child("users").child(userID).child("fullname").setValue(full_name);
+//                    databaseReference.child("users").child(userID).child("dob").setValue(dob);
+//                    databaseReference.child("users").child(userID).child("phone_number").setValue(phone_number);
+//                    //databaseReference.child("users").child(email).child("address").setValue(address);
+//
+//                    //save ID to memory
+//                    MemoryData.saveData(userID, RegisterActivity.this);
+//
+//                    //save name to memory
+//                    MemoryData.saveName(full_name, RegisterActivity.this);
+//                    Toast.makeText(RegisterActivity.this,"Successfully created", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                //nothing
+//            }
+//        });
     }
 
     boolean validateData(String email, String password, String confirmPassword, String phone_number) {
@@ -130,7 +169,7 @@ public class RegisterActivity<email> extends AppCompatActivity implements DatePi
                             userID = firebaseAuth.getUid();
                             DocumentReference documentReference = firestore.collection("user").document(userID);
                             StorageReference fileRef = storageReference.child("user_ava/"+userID+"/profile.jpg");
-                            fileRef.putFile(imageUri);
+                            //fileRef.putFile(imageUri);
                             Map<String, Object> user = new HashMap<>();
                             user.put("email", email);
                             user.put("full_name", full_name);

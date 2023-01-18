@@ -78,7 +78,7 @@ public class Profile extends AppCompatActivity {
         StorageReference profileReference = FirebaseStorage.getInstance().getReference().child("user_ava/"+userID+"/profile.jpg");
 
 
-        // to fetch data image data in Storage (FIREBASE)
+        // to fetch data image data in Storage (FIRESTORE)
         try {
             final File localFile = File.createTempFile("avatar","jpg");
             profileReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
