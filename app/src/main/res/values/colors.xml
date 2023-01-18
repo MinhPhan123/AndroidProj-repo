@@ -13,4 +13,6 @@
     <color name="black_trans">#8C808080</color>
     <color name="red_sand">#FFEFB261</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#B3FFFFFF</color>
+
 </resources>

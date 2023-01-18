@@ -1,14 +1,11 @@
 package rmit.ad.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,17 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import rmit.ad.myapplication.Adapter.ProductViewAdapter;
 import rmit.ad.myapplication.ModelClass.Item;
@@ -38,6 +29,7 @@ public class ItemList extends AppCompatActivity {
     private String categoryName;
     RecyclerView recycler_view;
     ImageView back;
+    ImageView searchIcon;
 
     ArrayList<Item> itemArrayList;
     ProductViewAdapter productAdapter;
@@ -49,6 +41,17 @@ public class ItemList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+
+        //Start search activity
+        searchIcon = findViewById(R.id.searchIcon1);
+        searchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(ItemList.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Implementation of back method
         back = (ImageView) findViewById(R.id.back);

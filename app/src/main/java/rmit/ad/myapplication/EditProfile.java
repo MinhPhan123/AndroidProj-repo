@@ -43,6 +43,7 @@ import java.util.Map;
 public class EditProfile extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     EditText profileName, profileEmail, profilePhone, profileDOB,profileAddress;
     ImageView profileImage;
+    ImageView back;
     Button saveUpdate;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -56,6 +57,17 @@ public class EditProfile extends AppCompatActivity implements DatePickerDialog.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        //Implementation of back method
+        back = (ImageView) findViewById(R.id.backEdi);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(EditProfile.this, Profile.class));
+                finish();
+            }
+        });
 
         //get the current user
         user = firebaseAuth.getCurrentUser();

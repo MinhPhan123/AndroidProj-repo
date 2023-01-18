@@ -8,14 +8,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -35,8 +32,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +47,7 @@ public class MainActivity extends BackgroundActivity {
     ImageSlider imageSlider;
 
     private ImageView bed, cabinet, chair, clock, desk, sofa, menu;
+    ImageView searchIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
@@ -72,8 +68,8 @@ public class MainActivity extends BackgroundActivity {
             createAccountInFireBase(google_name,google_mail);
         }
 
+        //Create a list for images Slide
         imageSlider = findViewById(R.id.imageSlider);
-        //ceate a list for images
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro1.jpg?alt=media&token=5260d800-1367-430a-8b55-7a4065103fb2", ScaleTypes.FIT));
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/androidproj-12477.appspot.com/o/AutoCaroselPic%2Fcaro2.jpg?alt=media&token=6293dd5f-9dbe-4323-8bb2-e4e7b659e390", ScaleTypes.FIT));
@@ -95,6 +91,17 @@ public class MainActivity extends BackgroundActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        //Start search activity
+        searchIcon = findViewById(R.id.searchIcon);
+        searchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
             }
         });
         
