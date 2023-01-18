@@ -60,6 +60,8 @@ dependencies {
 
     //Use for navigation drawer
     implementation 'com.google.android.material:material:1.1.0'
+    //Auto carosel motion layout
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
     //new
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-database:20.1.0'
