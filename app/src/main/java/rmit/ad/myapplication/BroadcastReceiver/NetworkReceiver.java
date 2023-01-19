@@ -1,13 +1,18 @@
 package rmit.ad.myapplication.BroadcastReceiver;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.LayoutInflater;
 import android.widget.Toast;
 
 public class NetworkReceiver extends BroadcastReceiver {
+
+    AlertDialog.Builder builder1;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         try{

@@ -11,11 +11,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +40,7 @@ public class ShoppingCartActivity extends BackgroundActivity {
     ImageView back;
     TextView totalPrice;
     ShoppingCartAdapter shoppingCartAdapter;
+    Button toPayment;
 
     FirebaseFirestore db;
     DocumentReference docRef;
@@ -52,6 +55,7 @@ public class ShoppingCartActivity extends BackgroundActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+        toPayment = findViewById(R.id.payment);
         totalPrice = findViewById(R.id.totalPrice);
         recyclerView = findViewById(R.id.cartRecycler);
         cartItems = new ArrayList<Item>();
@@ -74,6 +78,14 @@ public class ShoppingCartActivity extends BackgroundActivity {
             public void onClick(View view)
             {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+        });
+
+        toPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
                 finish();
             }
         });
