@@ -31,7 +31,7 @@ public class ImageViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = layoutInflater.inflate(R.layout.item_image, container, false);
         ImageView imageView = view.findViewById(R.id.image_item);
-        Glide.with(context).load(imageList.get(position)).into(imageView);
+        Picasso.get().load(imageList.get(position)).into(imageView);
         container.addView(view, 0);
         return view;
     }

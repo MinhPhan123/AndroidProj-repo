@@ -7,6 +7,38 @@
     tools:context=".ViewItemDetailActivity"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/grey_icon_border"
+            android:padding="8dp"
+            android:src="@drawable/back" />
+
+        <ImageView
+            android:id="@+id/wish_list_tem"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/grey_icon_border"
+            android:padding="8dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/heart" />
+
+    </RelativeLayout>
+
+
+
     <!-- Scroll view of the whole screen -->
     <ScrollView
         android:layout_width="match_parent"
@@ -26,20 +58,17 @@
             android:showDividers="middle"
             android:divider="@drawable/empty_tall_divider_vertical">
 
-            <!-- viewpager to display images of item -->
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:ignore="SpeakableTextPresentCheck">
-
-            </androidx.viewpager.widget.ViewPager>
-
-            <ViewFlipper
+            <!-- Image slider to display images of item -->
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider_item"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:id="@+id/image_flipper">
-            </ViewFlipper>
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/onlineex"
+                app:iss_auto_cycle="true"
+                app:iss_delay="1000"
+                app:iss_period="1000" />
 
 
 
@@ -54,18 +83,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:text="Item name">
-            </TextView>
-
-            <!-- text view of item ID -->
-            <TextView
-                android:id="@+id/item_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColor="#000000"
-                android:textSize="12sp"
-                android:text="Item ID">
             </TextView>
 
             <!-- text view of item price -->

@@ -23,9 +23,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import rmit.ad.myapplication.Adapter.ProductViewAdapter;
+import rmit.ad.myapplication.Adapter.onClickInterface;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class ItemList extends AppCompatActivity {
+public class ItemList extends AppCompatActivity implements onClickInterface{
 
     private String categoryName;
     RecyclerView recycler_view;
@@ -84,8 +85,10 @@ public class ItemList extends AppCompatActivity {
         productAdapter = new ProductViewAdapter(ItemList.this, itemArrayList);
 
         recycler_view.setAdapter(productAdapter);
+        productAdapter.setClickListener(this);
 
         EventChangeListener();
+
 
     }
 
@@ -124,5 +127,14 @@ public class ItemList extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void setClick(View view, int position) {
+        Item item = itemArrayList.get(position);
+        Intent intent = new Intent(ItemList.this, ViewItemDetailActivity.class);
+        intent.putExtra("item",item);
+        Toast.makeText(ItemList.this, "Position: " + position, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
     }
 }

@@ -26,6 +26,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
 {
     Context context;
     ArrayList<Item> itemArrayList;
+    static onClickInterface onClickInterface;
 
     public ProductViewAdapter(Context context, ArrayList<Item> itemArrayList) {
         this.context = context;
@@ -42,7 +43,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ProductViewAdapter.ProductViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull ProductViewAdapter.ProductViewHolder holder, @SuppressLint("RecyclerView") int position)
     {
         Item item = itemArrayList.get(position);
 
@@ -58,7 +59,11 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         return itemArrayList.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder
+    public void setClickListener(onClickInterface onClickInterface) {
+        ProductViewAdapter.onClickInterface = onClickInterface;
+    }
+
+    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         TextView product_title, product_description;
         ImageView product_image;
@@ -68,20 +73,15 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
             product_image = (ImageView) itemView.findViewById(R.id.product_image);
             product_title = (TextView) itemView.findViewById(R.id.product_title);
             product_description = (TextView) itemView.findViewById(R.id.product_description);
+            itemView.setOnClickListener(this);
+        }
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    Item item = itemArrayList.get(position);
-                    Intent intent = new Intent(view.getContext(), ViewItemDetailActivity.class);
-                    //Bundle bundle = new Bundle();
-                    //bundle.putParcelableArrayList("itemArrayList", itemArrayList);
-                    intent.putExtra("item",item);
-                    view.getContext().startActivity(intent);
-                }
-            });
 
+        @Override
+        public void onClick(View view) {
+            if (onClickInterface != null) {
+                onClickInterface.setClick(view, getAdapterPosition());
+            }
         }
     }
 
@@ -91,4 +91,8 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         this.itemArrayList = filteredList;
         notifyDataSetChanged();
     }
+
+
+
+
 }

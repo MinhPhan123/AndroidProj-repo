@@ -133,12 +133,12 @@
                             android:id="@+id/imageSlider"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            app:iss_period="1000"
-                            app:iss_auto_cycle="true"
-                            app:iss_delay="1000"
                             android:padding="5dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/onlineex" />
+                            android:src="@drawable/onlineex"
+                            app:iss_auto_cycle="true"
+                            app:iss_delay="1000"
+                            app:iss_period="1000" />
 
                     </LinearLayout>
 

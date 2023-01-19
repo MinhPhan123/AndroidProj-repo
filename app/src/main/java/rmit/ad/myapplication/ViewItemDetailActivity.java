@@ -16,6 +16,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.util.ArrayList;
 
 import rmit.ad.myapplication.Adapter.ImageViewPagerAdapter;
@@ -23,11 +27,13 @@ import rmit.ad.myapplication.ModelClass.Item;
 
 public class ViewItemDetailActivity extends AppCompatActivity {
     TextView itemDescriptionText;
-    String itemID;
     int selectedQuantity = 0;
     String selectedColor;
     Button toggleButton;
     boolean isExpanded = false;
+    Item item;
+    ImageSlider imageSlider;
+    ImageView btnBack, wishList;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -35,25 +41,51 @@ public class ViewItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_item_detail);
 
-        //ArrayList<Item> itemArrayList = this.getIntent().getExtras().getParcelableArrayList("itemArrayList");
-        Item item = (Item) getIntent().getSerializableExtra("item");
+        //Implementation of back method
+        btnBack = (ImageView) findViewById(R.id.back_button);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(ViewItemDetailActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+
+        //Implementation of wishList method
+        wishList = (ImageView) findViewById(R.id.wish_list_tem);
+        wishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(ViewItemDetailActivity.this, WishListActivity.class);
+                i.putExtra("item", item);
+                startActivity(i);
+            }
+        });
+
+        item = (Item) getIntent().getExtras().get("item");
 
 
         //Set up viewpager for image slider
+        /*
         ViewPager viewPager = findViewById(R.id.view_pager_image);
         ArrayList<String> imageList = item.getImage();
         ImageViewPagerAdapter imageViewPagerAdapter = new ImageViewPagerAdapter(this, imageList);
         viewPager.setAdapter(imageViewPagerAdapter);
         viewPager.setCurrentItem(0);
 
+         */
+
+        imageSlider = findViewById(R.id.image_slider_item);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(item.getImage().get(0),ScaleTypes.FIT));
+        slideModels.add(new SlideModel(item.getImage().get(1),ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+
         //Set up the name of the item
         TextView itemNameText = findViewById(R.id.item_name);
         itemNameText.setText(item.getName());
-
-        //Set up the ID of the item
-        TextView itemIDText = findViewById(R.id.item_ID);
-        itemID = item.getID();
-        itemIDText.setText(itemID);
 
         //Set up the price of the item
         TextView itemPriceText = findViewById(R.id.item_price);
@@ -78,6 +110,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
 
         //Set up the expandable description
         itemDescriptionText = findViewById(R.id.item_description);
+        itemDescriptionText.setText(item.getDescription());
         toggleButton = findViewById(R.id.toggle_button);
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +151,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ViewItemDetailActivity.this, ShoppingCartActivity.class);
-                i.putExtra("itemID", itemID);
+                i.putExtra("item", item);
                 i.putExtra("itemSelectedColor", selectedColor);
                 i.putExtra("itemSelectedQuantity", selectedQuantity);
                 startActivity(i);

@@ -26,9 +26,10 @@ import java.util.List;
 import java.util.Locale;
 
 import rmit.ad.myapplication.Adapter.ProductViewAdapter;
+import rmit.ad.myapplication.Adapter.onClickInterface;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements onClickInterface {
 
     ImageView back;
 
@@ -39,6 +40,8 @@ public class SearchActivity extends AppCompatActivity {
     ProductViewAdapter productAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
+
+    ArrayList<Item> filteredList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +74,9 @@ public class SearchActivity extends AppCompatActivity {
         productAdapter = new ProductViewAdapter(SearchActivity.this, itemArrayList);
 
         recycler_view.setAdapter(productAdapter);
+        productAdapter.setClickListener(this);
         EventChangeListener();
+        filteredList = itemArrayList;
 
         searchView = findViewById(R.id.search_product_name);
         searchView.clearFocus();
@@ -85,6 +90,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 filterList(newText);
+                productAdapter.setClickListener(SearchActivity.this);
                 return true;
             }
         });
@@ -93,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void filterList(String text)
     {
-        ArrayList<Item> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
         for (Item item : itemArrayList)
         {
             if(item.getName().toLowerCase().contains(text.toLowerCase()))
@@ -107,6 +113,7 @@ public class SearchActivity extends AppCompatActivity {
             }
             else {
                 productAdapter.setFilteredList(filteredList);
+
             }
         }
     }
@@ -145,5 +152,14 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void setClick(View view, int position) {
+        Item item = filteredList.get(position);
+        Intent intent = new Intent(SearchActivity.this, ViewItemDetailActivity.class);
+        intent.putExtra("item",item);
+        startActivity(intent);
+        finish();
     }
 }
