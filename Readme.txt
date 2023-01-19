@@ -22,9 +22,9 @@ II. Functionalities
 	7. View and update profile
 	8. View ordered history
 III. Technology Use
-1. Firebase component (Firestore Database, Realtime Database, Storage, Authentication)
-2. Carosel Motion Layout from Denzcoskum
-3. Image Display from Picasso Lib
+	1. Firebase component (Firestore Database, Realtime Database, Storage, Authentication)
+	2. Carosel Motion Layout from Denzcoskum
+	3. Image Display from Picasso Lib
 
 IV. Open issues and known bugs
-1. 
+	
