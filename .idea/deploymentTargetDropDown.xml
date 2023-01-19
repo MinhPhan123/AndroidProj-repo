@@ -7,11 +7,19 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
+
             <value value="C:\Users\Dell xps\.android\avd\Pixel_4_API_33.avd" />
+
+            <value value="C:\Users\Delmetian\.android\avd\Pixel_3a_API_33_x86_64.avd" />
+
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
+
     <timeTargetWasSelectedWithDropDown value="2023-01-18T13:19:07.186105100Z" />
+
+    <timeTargetWasSelectedWithDropDown value="2023-01-19T15:23:30.230922Z" />
+
   </component>
 </project>
