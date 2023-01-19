@@ -68,6 +68,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 intent.putExtra("chat_key",list2.getChatKey());
                 context.startActivity(intent);
             }
+
         });
 
     }
