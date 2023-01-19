@@ -23,30 +23,36 @@ import java.util.ArrayList;
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
 
-public class WishlistAdapter extends FirestoreRecyclerAdapter<Item, WishlistAdapter.wishlistViewHolder> {
+public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishlistViewHolder> {
 
+    ArrayList<Item> wishlist;
     Context context;
 
-    public WishlistAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
-        super(options);
-        this.context = context;
-    }
-
-    @Override
-    protected void onBindViewHolder(@NonNull wishlistViewHolder holder, int position, @NonNull Item model) {
-
-        Picasso.get().load(model.getImage().get(0))
-                .into(holder.itemImg);
-        holder.itemName.setText(model.getName());
-        holder.itemPrice.setText("$ "+String.valueOf(model.getPrice()));
+    public WishlistAdapter(ArrayList<Item> wishlist) {
+        this.wishlist = wishlist;
     }
 
     @NonNull
     @Override
     public wishlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_viewholder,parent,false);
+        View v =   LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_viewholder,parent,false);
         return new wishlistViewHolder(v);
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull wishlistViewHolder holder, int position) {
+        Picasso.get().load(wishlist.get(position).getImage().get(0))
+                .into(holder.itemImg);
+        holder.itemName.setText(wishlist.get(position).getName());
+        holder.itemPrice.setText("$ "+String.valueOf(wishlist.get(position).getPrice()));
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return wishlist.size();
+    }
+
 
     public static class wishlistViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;

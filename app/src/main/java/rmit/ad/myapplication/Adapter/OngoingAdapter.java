@@ -17,39 +17,44 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
 
-public class OngoingAdapter extends FirestoreRecyclerAdapter<Item, OngoingAdapter.ongoingViewHolder> {
+public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ongoingViewHolder> {
 
-    Context context;
-    public OngoingAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
-        super(options);
-        this.context = context;
-    }
+    ArrayList<Item> itemList;
 
-    @Override
-    protected void onBindViewHolder(@NonNull ongoingViewHolder holder, int position, @NonNull Item model) {
-        Picasso.get().load(model.getImage().get(0))
-                .into(holder.itemImg);
-        holder.itemName.setText(model.getName());
-        holder.itemPrice.setText("$ "+String.valueOf(model.getPrice()));
-        holder.orderStatus.setText("Delivering");
+    public OngoingAdapter(ArrayList<Item> itemList) {
+        this.itemList = itemList;
     }
 
     @NonNull
     @Override
     public ongoingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item_viewholder,parent,false);
         return new ongoingViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ongoingViewHolder holder, int position) {
+        Picasso.get().load(itemList.get(position).getImage().get(0))
+                .into(holder.itemImg);
+        holder.itemName.setText(itemList.get(position).getName());
+        holder.itemPrice.setText("$ "+String.valueOf(itemList.get(position).getPrice()));
+        holder.orderStatus.setText("Delivering");
+    }
+
+    @Override
+    public int getItemCount() {
+        return itemList.size();
     }
 
     public class ongoingViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;
         TextView itemName, itemPrice, orderStatus;
-        FirebaseFirestore db;
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+
 
         public ongoingViewHolder(@NonNull View itemView) {
             super(itemView);

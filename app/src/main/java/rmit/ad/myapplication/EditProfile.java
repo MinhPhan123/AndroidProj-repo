@@ -40,7 +40,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditProfile extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class EditProfile extends BackgroundActivity implements DatePickerDialog.OnDateSetListener {
     EditText profileName, profileEmail, profilePhone, profileDOB,profileAddress;
     ImageView profileImage;
     ImageView back;

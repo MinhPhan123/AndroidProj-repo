@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class ChatBox extends AppCompatActivity {
+public class ChatBox extends BackgroundActivity {
     EditText message = (EditText) findViewById(R.id.messageEditText);
     ImageButton sendBtn = (ImageButton) findViewById(R.id.sendBtn);
     @Override

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Admin extends AppCompatActivity {
+public class Admin extends BackgroundActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import rmit.ad.myapplication.Adapter.ImageViewPagerAdapter;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class ViewItemDetailActivity extends AppCompatActivity {
+public class ViewItemDetailActivity extends BackgroundActivity {
     TextView itemDescriptionText;
     int selectedQuantity = 0;
     String selectedColor;
@@ -58,7 +58,7 @@ public class ViewItemDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(ViewItemDetailActivity.this, WishListActivity.class);
+                Intent i = new Intent(ViewItemDetailActivity.this, WishlistActivity.class);
                 i.putExtra("item", item);
                 startActivity(i);
             }

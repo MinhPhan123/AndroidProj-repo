@@ -29,7 +29,7 @@ import rmit.ad.myapplication.Adapter.ProductViewAdapter;
 import rmit.ad.myapplication.Adapter.onClickInterface;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class SearchActivity extends AppCompatActivity implements onClickInterface {
+public class SearchActivity extends BackgroundActivity implements onClickInterface {
 
     ImageView back;
 

@@ -9,28 +9,28 @@ import java.util.List;
 
 public class Item implements Parcelable {
     private String ID;
-    private String name;
     private String category;
-    private double price;
-    private double discount;
-    private String description;
-    private int stockQuantity;
-    private ArrayList<String> image;
     private ArrayList<String> color;
+    private String description;
+    private double discount;
+    private ArrayList<String> image;
+    private String name;
+    private double price;
+    private int stockQuantity;
 
     //Constructor
     public Item() {}
 
-    public Item(String ID, String name, String category, double price, double discount, String description, int stockQuantity, ArrayList<String> image, ArrayList<String> color) {
+    public Item(String ID, String category, ArrayList<String> color, String description, double discount, ArrayList<String> image, String name, double price, int stockQuantity) {
         this.ID = ID;
-        this.name = name;
         this.category = category;
-        this.price = price;
-        this.discount = discount;
+        this.color = color;
         this.description = description;
+        this.discount = discount;
+        this.image = image;
+        this.name = name;
+        this.price = price;
         this.stockQuantity = stockQuantity;
-        this.image = new ArrayList<>(image);
-        this.color = new ArrayList<>(color);
     }
 
     protected Item(Parcel in) {

@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/activity_title"
-                    android:id="@+id/wishlistRecycler"
+                    android:id="@+id/cartRecycler"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -59,13 +59,27 @@
                     android:layout_above="@+id/toPayment"
                     >
                 </androidx.recyclerview.widget.RecyclerView>
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:layout_alignParentBottom="true"
                     android:id="@+id/toPayment">
-                </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Total price"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30dp"
+                        android:text="To Payment"/>
+                </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
 

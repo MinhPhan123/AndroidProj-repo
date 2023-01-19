@@ -26,7 +26,7 @@ import rmit.ad.myapplication.Adapter.ProductViewAdapter;
 import rmit.ad.myapplication.Adapter.onClickInterface;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class ItemList extends AppCompatActivity implements onClickInterface{
+public class ItemList extends BackgroundActivity implements onClickInterface{
 
     private String categoryName;
     RecyclerView recycler_view;
@@ -109,12 +109,12 @@ public class ItemList extends AppCompatActivity implements onClickInterface{
                             return;
                         }
                         else {
-                            QuerySnapshot querySnapshot = task.getResult();
+                                QuerySnapshot querySnapshot = task.getResult();
 
-                            if(!querySnapshot.isEmpty()) {
-                                for (QueryDocumentSnapshot dc : querySnapshot) {
-                                    itemArrayList.add(dc.toObject(Item.class));
-                                    productAdapter.notifyDataSetChanged();
+                                if(!querySnapshot.isEmpty()) {
+                                    for (QueryDocumentSnapshot dc : querySnapshot) {
+                                        itemArrayList.add(dc.toObject(Item.class));
+                                        productAdapter.notifyDataSetChanged();
                                 }
                             }
                             else

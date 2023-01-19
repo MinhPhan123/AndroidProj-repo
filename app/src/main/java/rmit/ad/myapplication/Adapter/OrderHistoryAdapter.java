@@ -17,32 +17,38 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
 
-public class OrderHistoryAdapter extends FirestoreRecyclerAdapter<Item, OrderHistoryAdapter.orderHistoryViewHolder> {
+public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.orderHistoryViewHolder>{
 
-    Context context;
+    ArrayList<Item> itemList;
 
-    public OrderHistoryAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
-        super(options);
-        this.context = context;
+    public OrderHistoryAdapter(ArrayList<Item> itemList) {
+        this.itemList = itemList;
     }
 
     @NonNull
     @Override
     public orderHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_viewholder,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item_viewholder,parent,false);
         return new orderHistoryViewHolder(v);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull orderHistoryViewHolder holder, int position, @NonNull Item model) {
-        Picasso.get().load(model.getImage().get(0))
+    public void onBindViewHolder(@NonNull orderHistoryViewHolder holder, int position) {
+        Picasso.get().load(itemList.get(position).getImage().get(0))
                 .into(holder.itemImg);
-        holder.itemName.setText(model.getName());
-        holder.itemPrice.setText("$ "+String.valueOf(model.getPrice()));
+        holder.itemName.setText(itemList.get(position).getName());
+        holder.itemPrice.setText("$ "+String.valueOf(itemList.get(position).getPrice()));
         holder.orderStatus.setText("Delivered");
+    }
+
+    @Override
+    public int getItemCount() {
+        return itemList.size();
     }
 
     public class orderHistoryViewHolder extends RecyclerView.ViewHolder{

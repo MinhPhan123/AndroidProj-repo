@@ -39,7 +39,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity<email> extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class RegisterActivity<email> extends BackgroundActivity implements DatePickerDialog.OnDateSetListener {
     EditText emailEditText, passwordEditText, confirmPasswordEditText, full_nameEditText, dobEditText, phone_numberEditText, addressEditText;
     Button create_accountBtn;
     ProgressBar processBar;
