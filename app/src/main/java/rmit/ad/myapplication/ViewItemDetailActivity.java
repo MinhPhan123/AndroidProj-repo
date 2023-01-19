@@ -1,5 +1,8 @@
 package rmit.ad.myapplication;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager.widget.ViewPager;
@@ -19,8 +22,16 @@ import android.widget.ViewFlipper;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import rmit.ad.myapplication.Adapter.ImageViewPagerAdapter;
 import rmit.ad.myapplication.ModelClass.Item;
@@ -34,12 +45,17 @@ public class ViewItemDetailActivity extends BackgroundActivity {
     Item item;
     ImageSlider imageSlider;
     ImageView btnBack, wishList;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseUser currUser = firebaseAuth.getCurrentUser();
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_item_detail);
+
+
 
         //Implementation of back method
         btnBack = (ImageView) findViewById(R.id.back_button);
@@ -53,14 +69,23 @@ public class ViewItemDetailActivity extends BackgroundActivity {
         });
 
         //Implementation of wishList method
-        wishList = (ImageView) findViewById(R.id.wish_list_tem);
+        wishList = (ImageView) findViewById(R.id.add_wishlist);
         wishList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(ViewItemDetailActivity.this, WishlistActivity.class);
-                i.putExtra("item", item);
-                startActivity(i);
+                DocumentReference documentReference = firestore.collection("Wishlist").document(currUser.getUid()).collection("Items").document(item.getID());
+                documentReference.set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d("TAG", "onSuccess: item added to wishlist");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure: " + e.toString());
+                            }
+                        });
             }
         });
 
@@ -150,11 +175,18 @@ public class ViewItemDetailActivity extends BackgroundActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ViewItemDetailActivity.this, ShoppingCartActivity.class);
-                i.putExtra("item", item);
-                i.putExtra("itemSelectedColor", selectedColor);
-                i.putExtra("itemSelectedQuantity", selectedQuantity);
-                startActivity(i);
+                DocumentReference documentReference = firestore.collection("Shopping Cart").document(currUser.getUid()).collection("Items").document(item.getID());
+                documentReference.set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("TAG", "onSuccess: item added to wishlist");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.toString());
+                    }
+                });
             }
         });
     }

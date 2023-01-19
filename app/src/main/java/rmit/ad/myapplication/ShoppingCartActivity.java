@@ -76,16 +76,20 @@ public class ShoppingCartActivity extends BackgroundActivity {
             }
         });
 
-        db.collection("user").document(currUser.getUid()).collection("Shopping Cart").get()
+        db.collection("Shopping Cart").document(currUser.getUid()).collection("Items").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot d : list) {
-                            Item i = d.toObject(Item.class);
-                            cartItems.add(i);
+                        if (!list.isEmpty()) {
+                            for (DocumentSnapshot d : list) {
+                                Item i = d.toObject(Item.class);
+                                cartItems.add(i);
+                            }
+                            shoppingCartAdapter.notifyDataSetChanged();
                         }
-                        shoppingCartAdapter.notifyDataSetChanged();
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
                     }
                 });
     }

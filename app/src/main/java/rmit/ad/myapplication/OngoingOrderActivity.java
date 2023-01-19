@@ -72,16 +72,20 @@ public class OngoingOrderActivity extends BackgroundActivity {
             }
         });
 
-        db.collection("user").document(currUser.getUid()).collection("Ongoing Orders").get()
+        db.collection("Ongoing Orders").document(currUser.getUid()).collection("Items").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot d : list) {
-                            Item i = d.toObject(Item.class);
-                            ongoingItems.add(i);
+                        if (!list.isEmpty()) {
+                            for (DocumentSnapshot d : list) {
+                                Item i = d.toObject(Item.class);
+                                ongoingItems.add(i);
+                            }
+                            ongoingAdapter.notifyDataSetChanged();
                         }
-                        ongoingAdapter.notifyDataSetChanged();
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
                     }
                 });
     }

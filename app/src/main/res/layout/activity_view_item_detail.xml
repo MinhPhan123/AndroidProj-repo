@@ -25,7 +25,7 @@
             android:src="@drawable/back" />
 
         <ImageView
-            android:id="@+id/wish_list_tem"
+            android:id="@+id/add_wishlist"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"

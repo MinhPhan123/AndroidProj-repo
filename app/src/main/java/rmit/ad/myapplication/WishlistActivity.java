@@ -1,5 +1,6 @@
 package rmit.ad.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -78,16 +79,21 @@ public class WishlistActivity extends BackgroundActivity {
             }
         });
 
-        db.collection("user").document(currUser.getUid()).collection("Wishlist").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Wishlist").document(currUser.getUid()).collection("Items").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                        for(DocumentSnapshot d:list){
-                            Item i = d.toObject(Item.class);
-                            wishlistItems.add(i);
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if(!querySnapshot.isEmpty()) {
+                            for (QueryDocumentSnapshot dc : querySnapshot) {
+                                Item i = dc.toObject(Item.class);
+                                wishlistItems.add(i);
+                                wishlistAdapter.notifyDataSetChanged();
+                            }
                         }
-                        wishlistAdapter.notifyDataSetChanged();
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
                     }
                 });
     }

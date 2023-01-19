@@ -1,6 +1,9 @@
 package rmit.ad.myapplication.Adapter;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -45,6 +51,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
                 .into(holder.itemImg);
         holder.itemName.setText(wishlist.get(position).getName());
         holder.itemPrice.setText("$ "+String.valueOf(wishlist.get(position).getPrice()));
+        holder.itemID.setText(wishlist.get(position).getID());
 
     }
 
@@ -56,28 +63,29 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
 
     public static class wishlistViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;
-        TextView itemName, itemPrice;
+        TextView itemName, itemPrice, itemID;
         FirebaseFirestore db;
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currUser = firebaseAuth.getCurrentUser();
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         public wishlistViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImg = itemView.findViewById(R.id.item_image);
             itemName = itemView.findViewById(R.id.item_name);
             itemPrice = itemView.findViewById(R.id.item_price);
+            itemID = itemView.findViewById(R.id.itemID);
 
             itemView.findViewById(R.id.buyBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    db.collection("User").document(currUser.getUid()).collection("Wishlist").document("itemName")
-                            .delete();
+
                 }
             });
             itemView.findViewById(R.id.removeBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    db.collection("User").document(currUser.getUid()).collection("Wishlist").document("itemName")
-                            .delete();
+
                 }
             });
         }

@@ -47,7 +47,7 @@ public class MainActivity extends BackgroundActivity {
     ImageSlider imageSlider;
 
     private ImageView bed, cabinet, chair, clock, desk, sofa, menu;
-    ImageView wishlist;
+    ImageView wishlist, shoppingCart;
     ImageView searchIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -114,6 +114,8 @@ public class MainActivity extends BackgroundActivity {
         desk = (ImageView) findViewById(R.id.desk);
         sofa = (ImageView) findViewById(R.id.sofa);
         wishlist = findViewById(R.id.toWishlist);
+        shoppingCart = findViewById(R.id.toCart);
+
 
         //Start activity base on category for the item list display
         bed.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +183,14 @@ public class MainActivity extends BackgroundActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WishlistActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        shoppingCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(i);
             }
         });
 
