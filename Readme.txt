@@ -8,12 +8,15 @@ I. Work Distribution _ Group name: Home
 			Item object.
 
 	2. Nguyen Minh Hien -3877996
-		UI design for Login/ Logout, Chat Box, Profile
+		Frontend design for Splash screen, Login/Register, Chat box, Profile, Messages Adapter (display user), Chat Adapter (display conversation messages)
+		Backend coding for Register/Login (with normal resgister with mail verify and Google mail, foget password); 
+		Display profile, upload avatar(Profile) & Edit the user's information (EditProfile); 
+		Chat funtion with the recucler view to display the users and the chat (Cgat List, Chat Adapter, Chat, ChatActivity, MessageList, MessageAdapter) 
 	3. Trinh Van Minh Duc -3915177
 	4. Phan Duy Anh -s3802674
 
 II. Functionalities
-	1. SignIn/SignUp and LogOut
+	1. SignIn/SignUp and LogOut with normal email verify and with Google email & Forget password (password recorvery)
 	2. Search for item
 	3. Display item list base on category
 	4. View item description
