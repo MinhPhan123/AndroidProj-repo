@@ -52,23 +52,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:onClick="chatbox"
->
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/chat"
-            android:paddingTop="10dp" />
+            android:paddingTop="10dp"
+            android:src="@drawable/chat" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
             android:text="Contact Us"
+            android:textColor="#000"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="history">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/history"
+            android:paddingTop="10dp"/>
+        <TextView
+            android:id="@+id/order_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order History"
             android:textSize="30sp"
             android:textColor="#000"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="wishlist">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/wishlist"
+            android:paddingTop="10dp"/>
+        <TextView
+            android:id="@+id/wishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wish list"
+            android:textSize="30sp"
+            android:textColor="#000"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

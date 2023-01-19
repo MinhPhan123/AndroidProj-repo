@@ -39,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     String userID;
@@ -199,10 +200,12 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     //email has been register and verify
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
-                        //go to main activity (for now go to profile to test)
-                        startActivity(new Intent(LoginActivity.this,Profile.class));
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+                    }else if (Objects.equals(firebaseAuth.getUid(), "OiAsp63xDRbHBlHTeSBygdlFuh83")){                  //if it's a admin account with has been already added
+                        startActivity(new Intent(LoginActivity.this,Admin.class));
                         finish();
-                    }else{
+                    } else{
                         Utility.showToast(LoginActivity.this,"Email has not been verified");
                     }
                 }else{
