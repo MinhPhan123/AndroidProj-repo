@@ -10,11 +10,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import rmit.ad.myapplication.Adapter.WishlistAdapter;
+import rmit.ad.myapplication.ModelClass.Item;
 
 public class WishlistActivity extends AppCompatActivity {
 
@@ -25,6 +30,8 @@ public class WishlistActivity extends AppCompatActivity {
     WishlistAdapter wishlistAdapter;
     FirebaseFirestore db;
     DocumentReference docRef;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseUser currUser = firebaseAuth.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,12 @@ public class WishlistActivity extends AppCompatActivity {
             }
         });
 
+        Query query = db.collection("User").document(currUser.getUid()).collection("Wishlist");
+        FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
+                .setQuery(query, Item.class).build();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        wishlistAdapter = new WishlistAdapter(options,this);
+        recyclerView.setAdapter(wishlistAdapter);
     }
 }

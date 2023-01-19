@@ -47,6 +47,7 @@ public class MainActivity extends BackgroundActivity {
     ImageSlider imageSlider;
 
     private ImageView bed, cabinet, chair, clock, desk, sofa, menu;
+    ImageView wishlist;
     ImageView searchIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -112,6 +113,7 @@ public class MainActivity extends BackgroundActivity {
         clock = (ImageView) findViewById(R.id.clock);
         desk = (ImageView) findViewById(R.id.desk);
         sofa = (ImageView) findViewById(R.id.sofa);
+        wishlist = findViewById(R.id.toWishlist);
 
         //Start activity base on category for the item list display
         bed.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +175,16 @@ public class MainActivity extends BackgroundActivity {
                 startActivity(intent);
             }
         });
+
+        wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, WishlistActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
     // check if the data of this google user is exits - then no need to create the data in cloud firestore
     // else create a new user using google fullname and email
@@ -219,7 +231,6 @@ public class MainActivity extends BackgroundActivity {
                 }
             }
         });
-
 
     }
 
