@@ -312,4 +312,14 @@ public class MainActivity extends AppCompatActivity {
         });
         startActivity(new Intent(getApplicationContext(),ChatActivity.class));
     }
+
+    public void wishlist(View view){
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));             //change the activity name
+
+    }
+
+    public void history(View view){
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));             //change the activity name
+
+    }
 }
