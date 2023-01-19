@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +23,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import rmit.ad.myapplication.Adapter.ProductViewAdapter;
+import rmit.ad.myapplication.Adapter.onClickInterface;
 import rmit.ad.myapplication.ModelClass.Item;
 
-public class ItemList extends AppCompatActivity {
+public class ItemList extends AppCompatActivity implements onClickInterface{
 
     private String categoryName;
     RecyclerView recycler_view;
@@ -50,6 +52,7 @@ public class ItemList extends AppCompatActivity {
             {
                 Intent intent = new Intent(ItemList.this, SearchActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -82,8 +85,10 @@ public class ItemList extends AppCompatActivity {
         productAdapter = new ProductViewAdapter(ItemList.this, itemArrayList);
 
         recycler_view.setAdapter(productAdapter);
+        productAdapter.setClickListener(this);
 
         EventChangeListener();
+
 
     }
 
@@ -92,6 +97,7 @@ public class ItemList extends AppCompatActivity {
         db.collection("item").whereEqualTo("category", categoryName).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onComplete(@Nullable Task<QuerySnapshot> task){
 
@@ -121,5 +127,14 @@ public class ItemList extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void setClick(View view, int position) {
+        Item item = itemArrayList.get(position);
+        Intent intent = new Intent(ItemList.this, ViewItemDetailActivity.class);
+        intent.putExtra("item",item);
+        Toast.makeText(ItemList.this, "Position: " + position, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
     }
 }

@@ -1,6 +1,7 @@
 package rmit.ad.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     DocumentReference docRef;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser currUser = firebaseAuth.getCurrentUser();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,5 +60,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         wishlistAdapter = new WishlistAdapter(options,this);
         recyclerView.setAdapter(wishlistAdapter);
+
     }
 }

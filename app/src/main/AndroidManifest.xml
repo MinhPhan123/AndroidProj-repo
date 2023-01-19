@@ -23,6 +23,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".ShoppingCartActivity"
             android:exported="false">
@@ -59,8 +60,30 @@
             </intent-filter>
         </receiver>
 
+
         <activity
             android:name=".ItemList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ViewItemDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ShoppingCartActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

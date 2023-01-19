@@ -21,6 +21,7 @@
                 android:layout_height="35dp"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/grey_icon_border"
                 android:padding="8dp"
                 android:src="@drawable/back" />
@@ -63,6 +64,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/grey_icon_border"
                     android:padding="8dp"
                     android:src="@drawable/loupe" />
@@ -71,6 +73,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/grey_icon_border"
                     android:padding="8dp"
                     android:src="@drawable/cart" />
@@ -78,7 +81,7 @@
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/grey_icon_border"
                     android:padding="8dp"
                     android:src="@drawable/heart" />
