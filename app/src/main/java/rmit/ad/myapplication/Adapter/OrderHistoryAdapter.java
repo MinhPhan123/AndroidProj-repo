@@ -20,45 +20,41 @@ import com.squareup.picasso.Picasso;
 import rmit.ad.myapplication.ModelClass.Item;
 import rmit.ad.myapplication.R;
 
-public class OngoingAdapter extends FirestoreRecyclerAdapter<Item, OngoingAdapter.ongoingViewHolder> {
+public class OrderHistoryAdapter extends FirestoreRecyclerAdapter<Item, OrderHistoryAdapter.orderHistoryViewHolder> {
 
     Context context;
-    public OngoingAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
+
+    public OrderHistoryAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
         super(options);
         this.context = context;
     }
 
+    @NonNull
     @Override
-    protected void onBindViewHolder(@NonNull ongoingViewHolder holder, int position, @NonNull Item model) {
+    public orderHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_viewholder,parent,false);
+        return new orderHistoryViewHolder(v);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull orderHistoryViewHolder holder, int position, @NonNull Item model) {
         Picasso.get().load(model.getImage().get(0))
                 .into(holder.itemImg);
         holder.itemName.setText(model.getName());
         holder.itemPrice.setText("$ "+String.valueOf(model.getPrice()));
-        holder.orderStatus.setText("Delivering");
+        holder.orderStatus.setText("Delivered");
     }
 
-    @NonNull
-    @Override
-    public ongoingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item,parent,false);
-        return new ongoingViewHolder(v);
-    }
-
-    public class ongoingViewHolder extends RecyclerView.ViewHolder{
+    public class orderHistoryViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;
         TextView itemName, itemPrice, orderStatus;
-        FirebaseFirestore db;
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser currUser = firebaseAuth.getCurrentUser();
 
-        public ongoingViewHolder(@NonNull View itemView) {
+        public orderHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-
             itemImg = itemView.findViewById(R.id.item_image);
             itemName = itemView.findViewById(R.id.item_name);
             itemPrice = itemView.findViewById(R.id.item_price);
             orderStatus = itemView.findViewById(R.id.status);
-
         }
     }
 }

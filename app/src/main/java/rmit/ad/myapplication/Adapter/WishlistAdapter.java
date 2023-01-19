@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -49,6 +51,9 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<Item, WishlistAdap
     public static class wishlistViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;
         TextView itemName, itemPrice;
+        FirebaseFirestore db;
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currUser = firebaseAuth.getCurrentUser();
         public wishlistViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImg = itemView.findViewById(R.id.item_image);
@@ -58,7 +63,15 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<Item, WishlistAdap
             itemView.findViewById(R.id.buyBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    db.collection("User").document(currUser.getUid()).collection("Wishlist").document("itemName")
+                            .delete();
+                }
+            });
+            itemView.findViewById(R.id.removeBtn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    db.collection("User").document(currUser.getUid()).collection("Wishlist").document("itemName")
+                            .delete();
                 }
             });
         }
