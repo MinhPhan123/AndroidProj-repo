@@ -24,12 +24,10 @@ import rmit.ad.myapplication.R;
 public class WishlistAdapter extends FirestoreRecyclerAdapter<Item, WishlistAdapter.wishlistViewHolder> {
 
     Context context;
-    ArrayList<Item> itemArrayList;
 
-    public WishlistAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context, ArrayList<Item> itemArrayList) {
+    public WishlistAdapter(@NonNull FirestoreRecyclerOptions<Item> options, Context context) {
         super(options);
         this.context = context;
-        this.itemArrayList = itemArrayList;
     }
 
     @Override

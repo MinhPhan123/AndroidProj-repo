@@ -33,18 +33,13 @@
             android:id="@+id/item_price"/>
     </LinearLayout>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buyBtn"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/cancelBtn"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:text="Add to cart"
-        android:textSize="10dp"
+        android:text="Cancel"
+        android:textSize="11dp"
         >
     </Button>
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true">
-    </ImageButton>
 </RelativeLayout>
