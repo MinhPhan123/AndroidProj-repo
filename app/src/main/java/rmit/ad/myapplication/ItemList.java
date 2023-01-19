@@ -30,8 +30,7 @@ public class ItemList extends BackgroundActivity implements onClickInterface{
 
     private String categoryName;
     RecyclerView recycler_view;
-    ImageView back;
-    ImageView searchIcon;
+    ImageView back, searchIcon, toCart, toWishlist;
 
     ArrayList<Item> itemArrayList;
     ProductViewAdapter productAdapter;
@@ -63,6 +62,24 @@ public class ItemList extends BackgroundActivity implements onClickInterface{
             public void onClick(View view)
             {
                 startActivity(new Intent(ItemList.this, MainActivity.class));
+                finish();
+            }
+        });
+
+        toCart = findViewById(R.id.toCart);
+        toCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ItemList.this, ShoppingCartActivity.class));
+                finish();
+            }
+        });
+
+        toWishlist = findViewById(R.id.toWishlist);
+        toWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ItemList.this, WishlistActivity.class));
                 finish();
             }
         });

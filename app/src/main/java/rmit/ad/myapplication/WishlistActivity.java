@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,10 +39,8 @@ import rmit.ad.myapplication.ModelClass.Item;
 
 public class WishlistActivity extends BackgroundActivity {
 
+    ImageView back;
     RecyclerView recyclerView;
-    ImageView menu;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
     WishlistAdapter wishlistAdapter;
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -60,8 +59,7 @@ public class WishlistActivity extends BackgroundActivity {
         wishlistItems = new ArrayList<Item>();
         wishlistAdapter = new WishlistAdapter(wishlistItems);
         recyclerView.setAdapter(wishlistAdapter);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
+
         db = FirebaseFirestore.getInstance();
 
         //Set up displaying method while loading
@@ -70,12 +68,13 @@ public class WishlistActivity extends BackgroundActivity {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        menu = (ImageView) findViewById(R.id.menu);
-
-        menu.setOnClickListener(new View.OnClickListener() {
+        back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
+            public void onClick(View view)
+            {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 
@@ -89,12 +88,14 @@ public class WishlistActivity extends BackgroundActivity {
                             for (QueryDocumentSnapshot dc : querySnapshot) {
                                 Item i = dc.toObject(Item.class);
                                 wishlistItems.add(i);
-                                wishlistAdapter.notifyDataSetChanged();
                             }
                         }
+                        wishlistAdapter.notifyDataSetChanged();
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
                     }
                 });
     }
+
+
 }

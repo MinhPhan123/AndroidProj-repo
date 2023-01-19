@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,9 +35,8 @@ import rmit.ad.myapplication.ModelClass.Item;
 public class ShoppingCartActivity extends BackgroundActivity {
 
     RecyclerView recyclerView;
-    ImageView menu;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
+    ImageView back;
+    TextView totalPrice;
     ShoppingCartAdapter shoppingCartAdapter;
 
     FirebaseFirestore db;
@@ -45,21 +46,21 @@ public class ShoppingCartActivity extends BackgroundActivity {
     ArrayList<Item> cartItems;
     ProgressDialog progressDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+        totalPrice = findViewById(R.id.totalPrice);
         recyclerView = findViewById(R.id.cartRecycler);
         cartItems = new ArrayList<Item>();
         shoppingCartAdapter = new ShoppingCartAdapter(cartItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(shoppingCartAdapter);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
         db = FirebaseFirestore.getInstance();
-        menu = (ImageView) findViewById(R.id.menu);
+
 
         //Set up displaying method while loading
         progressDialog = new ProgressDialog(this);
@@ -67,12 +68,13 @@ public class ShoppingCartActivity extends BackgroundActivity {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        menu = (ImageView) findViewById(R.id.menu);
-
-        menu.setOnClickListener(new View.OnClickListener() {
+        back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
+            public void onClick(View view)
+            {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 
@@ -82,11 +84,14 @@ public class ShoppingCartActivity extends BackgroundActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                         if (!list.isEmpty()) {
+                            double price = 0;
                             for (DocumentSnapshot d : list) {
                                 Item i = d.toObject(Item.class);
+                                price += i.getPrice();
                                 cartItems.add(i);
                             }
                             shoppingCartAdapter.notifyDataSetChanged();
+                            totalPrice.setText("$ " + String.valueOf(price));
                         }
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();

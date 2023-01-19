@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,7 +34,7 @@ import rmit.ad.myapplication.ModelClass.Item;
 public class OngoingOrderActivity extends BackgroundActivity {
 
     RecyclerView recyclerView;
-    ImageView menu;
+    ImageView back;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseFirestore db;
@@ -63,12 +64,13 @@ public class OngoingOrderActivity extends BackgroundActivity {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        menu = (ImageView) findViewById(R.id.menu);
-
-        menu.setOnClickListener(new View.OnClickListener() {
+        back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
+            public void onClick(View view)
+            {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 

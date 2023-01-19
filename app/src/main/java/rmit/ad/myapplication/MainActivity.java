@@ -271,6 +271,7 @@ public class MainActivity extends BackgroundActivity {
     //move to profile activity using the sidebar
     public void profile(View view){
         startActivity(new Intent(getApplicationContext(),Profile.class));
+        finish();
     }
 
     public void chatbox(View view){
@@ -361,15 +362,22 @@ public class MainActivity extends BackgroundActivity {
             }
         });
         startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+        finish();
     }
 
-    public void wishlist(View view){
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));             //change the activity name
-
+    public void ongoing(View view){
+        startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));//change the activity name
+        finish();
     }
 
     public void history(View view){
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));             //change the activity name
-
+        startActivity(new Intent(getApplicationContext(),OrderHistoryActivity.class));             //change the activity name
+        finish();
     }
+
+    public void home(View v){
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
+    }
+
 }

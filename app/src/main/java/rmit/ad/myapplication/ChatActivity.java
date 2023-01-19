@@ -43,7 +43,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import rmit.ad.myapplication.messages.MessageList;
 import rmit.ad.myapplication.messages.MessagesAdapter;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends BackgroundActivity {
     private boolean dataSet = false;
     private RecyclerView messagesRecyclerView;
     private MessagesAdapter messagesAdapter;

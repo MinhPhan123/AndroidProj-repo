@@ -14,6 +14,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -39,10 +40,12 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
 
     @Override
     public void onBindViewHolder(@NonNull shoppingCartViewHolder holder, int position) {
+        Item item = shoppingCart.get(position);
         Picasso.get().load(shoppingCart.get(position).getImage().get(0))
                 .into(holder.itemImg);
         holder.itemName.setText(shoppingCart.get(position).getName());
         holder.itemPrice.setText("$ "+String.valueOf(shoppingCart.get(position).getPrice()));
+        holder.item = item;
     }
 
     @Override
@@ -51,11 +54,13 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     }
 
     public class shoppingCartViewHolder extends RecyclerView.ViewHolder{
+        Item item;
         ImageView itemImg;
         TextView itemName, itemPrice;
         FirebaseFirestore db;
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         public shoppingCartViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImg = itemView.findViewById(R.id.item_image);
@@ -65,7 +70,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             itemView.findViewById(R.id.removeBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    DocumentReference documentReference = firestore.collection("Shopping Cart").document(currUser.getUid()).collection("Items").document(item.getID());
+                    documentReference.delete();
                 }
             });
         }
