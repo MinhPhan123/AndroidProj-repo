@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,7 +41,6 @@ public class ShoppingCartActivity extends BackgroundActivity {
 
     RecyclerView recyclerView;
     ImageView back;
-    TextView totalPrice;
     ShoppingCartAdapter shoppingCartAdapter;
     Button toPayment;
 
@@ -58,7 +58,6 @@ public class ShoppingCartActivity extends BackgroundActivity {
         setContentView(R.layout.activity_shopping_cart);
 
         toPayment = findViewById(R.id.payment);
-        totalPrice = findViewById(R.id.totalPrice);
         recyclerView = findViewById(R.id.cartRecycler);
         cartItems = new ArrayList<Item>();
         shoppingCartAdapter = new ShoppingCartAdapter(cartItems);
@@ -86,8 +85,12 @@ public class ShoppingCartActivity extends BackgroundActivity {
         toPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-                finish();
+                if (!cartItems.isEmpty()) {
+                    startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                    finish();
+                }else{
+                    Toast.makeText(getApplicationContext(),"No item in cart!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -97,15 +100,13 @@ public class ShoppingCartActivity extends BackgroundActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                         if (!list.isEmpty()) {
-                            double price = 0;
+
                             for (DocumentSnapshot d : list) {
                                 Item i = d.toObject(Item.class);
-                                price += i.getPrice();
                                 cartItems.add(i);
                             }
 
                             shoppingCartAdapter.notifyDataSetChanged();
-                            totalPrice.setText("$ " + String.format("%.2f",price));
                         }
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();

@@ -18,13 +18,24 @@
         android:src="@drawable/back" />
 
     <TextView
+        android:id="@+id/totalPrice"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Total: "
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select payment method"
+        android:text="Select payment method:"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="20dp">
     </TextView>
 
     <RadioGroup

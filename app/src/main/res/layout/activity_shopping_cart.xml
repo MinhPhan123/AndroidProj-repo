@@ -51,33 +51,16 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_above="@+id/toPayment"
+                android:layout_above="@+id/payment"
                 >
             </androidx.recyclerview.widget.RecyclerView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/toPayment">
-                <TextView
-                    android:id="@+id/totalPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Total price"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    android:textStyle="bold"/>
                 <Button
                     android:id="@+id/payment"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
                     android:text="To Payment"/>
-            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 

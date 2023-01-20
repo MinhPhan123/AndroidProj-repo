@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +28,7 @@ import rmit.ad.myapplication.ModelClass.Item;
 public class PaymentActivity extends BackgroundActivity {
 
     String paymentMethod;
+    TextView totalPrice;
 
     FirebaseFirestore db;
     ArrayList<Item> cartItems;
@@ -43,6 +45,7 @@ public class PaymentActivity extends BackgroundActivity {
         db = FirebaseFirestore.getInstance();
 
         RadioGroup paymentMethodRadioGroup = findViewById(R.id.payment_radio_group);
+        totalPrice = findViewById(R.id.totalPrice);
 
         paymentMethodRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -54,6 +57,21 @@ public class PaymentActivity extends BackgroundActivity {
                     break;
             }
         });
+        db.collection("Shopping Cart").document(currUser.getUid()).collection("Items").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        if (!list.isEmpty()) {
+                            double price = 0;
+                            for (DocumentSnapshot d : list) {
+                                Item i = d.toObject(Item.class);
+                                price += i.getPrice();
+                            }
+                            totalPrice.setText("Total Price: $" + String.format("%.2f",price));
+                        }
+                    }
+                });
 
 
         Button btnPay = findViewById(R.id.button_pay);
@@ -67,7 +85,6 @@ public class PaymentActivity extends BackgroundActivity {
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                 List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                                 if (!list.isEmpty()) {
-                                    double price = 0;
                                     for (DocumentSnapshot d : list) {
                                         Item i = d.toObject(Item.class);
                                         DocumentReference df = firestore.collection("Ongoing Orders").document(currUser.getUid()).collection("Items").document(i.getID());
