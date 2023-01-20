@@ -14,6 +14,8 @@ I. Work Distribution _ Group name: Home
 		Chat funtion with the recucler view to display the users and the chat (Cgat List, Chat Adapter, Chat, ChatActivity, MessageList, MessageAdapter) 
 	3. Trinh Van Minh Duc -3915177
 	4. Phan Duy Anh -s3802674
+		Front end design for view item detail page, payment page, credit card form, no internet connection alert dialog
+		Back end coding for ViewItemDetailActivity, linking between ItemList activity, SearchActivity with ViewItemDetail activity, Item object.
 
 II. Functionalities
 	1. SignIn/SignUp and LogOut with normal email verify and with Google email & Forget password (password recorvery)
