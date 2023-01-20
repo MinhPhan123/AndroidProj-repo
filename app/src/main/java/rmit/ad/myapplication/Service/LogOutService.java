@@ -21,7 +21,7 @@ import rmit.ad.myapplication.LoginActivity;
 import rmit.ad.myapplication.SplashActivity;
 
 public class LogOutService extends Service {
-    private static final long WAIT_TIME =10000000;
+    private static final long WAIT_TIME =10000;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     private Handler handler;
@@ -60,6 +60,7 @@ public class LogOutService extends Service {
     public void LogOutServiceFunc(){
         FirebaseAuth.getInstance().signOut();//email password sign out
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+        Toast.makeText(getApplicationContext(), "Signed out due to inactivity", Toast.LENGTH_SHORT).show();
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
