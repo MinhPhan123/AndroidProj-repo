@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:onClick="ongoing">
+        android:onClick="ongoing_order">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -155,8 +155,7 @@
             android:textSize="30sp"
             android:textColor="#000"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-/>
+            android:paddingTop="10dp" />
     </LinearLayout>
 
 </LinearLayout>

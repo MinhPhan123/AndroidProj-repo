@@ -318,7 +318,7 @@ public class MainActivity extends BackgroundActivity {
             intent.putExtra("full_name",MemoryData.getName(this));
             intent.putExtra("email",email);
             intent.putExtra("phone_number",phone_number);
-//            intent.putExtra("profile_pic",profileURL);              Realtime database can't now store an URL
+//          intent.putExtra("profile_pic",profileURL);              Realtime database can't now store an URL
             startActivity(intent);
         }
 
@@ -365,7 +365,7 @@ public class MainActivity extends BackgroundActivity {
         finish();
     }
 
-    public void ongoing(View view){
+    public void ongoing_order(View view){
         startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));//change the activity name
         finish();
     }
