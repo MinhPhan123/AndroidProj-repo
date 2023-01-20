@@ -10,10 +10,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.internal.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -28,9 +24,8 @@ public class LogOutService extends Service {
     private Runnable runnable;
     private static LogOutService service;
     private long lastTouchEventTime;
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-    GoogleSignInClient gsc;
-    public static CountDownTimer timer;
+
+    FirebaseUser currUser;
 
     @Override
     public void onCreate(){
@@ -38,7 +33,7 @@ public class LogOutService extends Service {
         service = this;
         handler = new Handler();
         lastTouchEventTime = System.currentTimeMillis();
-        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        currUser = firebaseAuth.getCurrentUser();
         runnable = new Runnable() {
             @Override
             public void run() {
