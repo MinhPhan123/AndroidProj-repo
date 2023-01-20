@@ -366,7 +366,7 @@ public class MainActivity extends BackgroundActivity {
     }
 
 
-    public void ongoing_order(View view){
+    public void ongoing(View view){
         startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));//change the activity name
         finish();
     }

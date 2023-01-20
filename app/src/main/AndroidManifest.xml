@@ -24,13 +24,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreditCardFormActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".OrderHistoryActivity"
             android:exported="false">
             <meta-data

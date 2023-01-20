@@ -34,7 +34,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small">
     </TextView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_try_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
         android:backgroundTint="#7B7B7B">
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
 
 </LinearLayout>

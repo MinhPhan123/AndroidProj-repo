@@ -45,9 +45,8 @@ public class OngoingOrderActivity extends BackgroundActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ongoing_order);
-
 
         recyclerView = findViewById(R.id.ongoingRecycler);
         recyclerView.setHasFixedSize(true);
