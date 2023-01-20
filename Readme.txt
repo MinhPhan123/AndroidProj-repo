@@ -15,6 +15,12 @@ I. Work Distribution
 		Display profile, upload avatar(Profile) & Edit the user's information (EditProfile); 
 		Chat funtion with the recycler view to display the users and the chat (Cgat List, Chat Adapter, Chat, ChatActivity, MessageList, MessageAdapter) 
 	3. Trinh Van Minh Duc -3915177
+		Backend coding for broadcast receiver(warning no wifi signal), auto logout service
+	
+	
+	
+	
+	
 	4. Phan Duy Anh -s3802674
 		Front end design for view item detail page, payment page, no internet connection alert dialog
 		Back end coding for ViewItemDetailActivity, linking between ItemList activity, SearchActivity with ViewItemDetail activity, Item object.
