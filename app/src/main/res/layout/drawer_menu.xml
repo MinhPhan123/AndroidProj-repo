@@ -85,7 +85,7 @@
             android:id="@+id/on_going_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="On Going Order"
+            android:text="Ongoing Order"
             android:textSize="30sp"
             android:textColor="#000"
             android:paddingLeft="10dp"

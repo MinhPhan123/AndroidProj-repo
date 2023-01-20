@@ -91,8 +91,4 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         this.itemArrayList = filteredList;
         notifyDataSetChanged();
     }
-
-
-
-
 }

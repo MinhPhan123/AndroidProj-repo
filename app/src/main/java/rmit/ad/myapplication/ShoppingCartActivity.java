@@ -65,7 +65,6 @@ public class ShoppingCartActivity extends BackgroundActivity {
         recyclerView.setAdapter(shoppingCartAdapter);
         db = FirebaseFirestore.getInstance();
 
-
         //Set up displaying method while loading
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);

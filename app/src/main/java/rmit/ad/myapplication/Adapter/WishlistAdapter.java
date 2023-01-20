@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.content.Intent;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
 
     ArrayList<Item> wishlist;
     Context context;
+    int pos;
 
     public WishlistAdapter(ArrayList<Item> wishlist) {
         this.wishlist = wishlist;
@@ -69,7 +72,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
     }
 
 
-    public static class wishlistViewHolder extends RecyclerView.ViewHolder{
+    public class wishlistViewHolder extends RecyclerView.ViewHolder{
         ImageView itemImg;
         TextView itemName, itemPrice, itemID;
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -92,6 +95,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
                         @Override
                         public void onSuccess(Void unused) {
                             Log.d("TAG", "onSuccess: item added to wishlist");
+                            Toast.makeText(view.getContext(), "Successfully added into your cart", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -106,6 +110,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.wishli
                 public void onClick(View view) {
                     DocumentReference documentReference = firestore.collection("Wishlist").document(currUser.getUid()).collection("Items").document(item.getID());
                     documentReference.delete();
+                    wishlist.remove(item);
+                    notifyDataSetChanged();
                 }
             });
         }
