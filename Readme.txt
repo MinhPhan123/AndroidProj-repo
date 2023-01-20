@@ -1,11 +1,13 @@
-I. Work Distribution _ Group name: Home
+Group name: Home
+I. Work Distribution
 	1. Phan Nhat Minh -s3904422
-		Set up and implement database item
-		Frontend design for landing page, navigation drawer in landing page,
-			category, item list, search activity, product view layout
-		Backend coding for landing page(aka. Main Activity), ItemList activity
-			(include recycler view holder), SearchActiity (include search algorithm),
-			Item object.
+		Set up and implement database shop item
+		Frontend design for landing page, navigation drawer in landing page, category, item list, search activity, product view layout.
+		Backend coding for landing page(aka. Main Activity), ItemList activity (include recycler view holder), SearchActiity (include search algorithm), ProductViewAdapter for RecyclerView in landing page, design Item object. 
+		Linking activity from navigation drawer into coresponding activity. 
+		Display auto carousel image slider for landing page and item description. 
+		Debug item receive into the ViewItemDetailActivity.
+		Debug update view after add and remove item from cart and wishlist
 
 	2. Nguyen Minh Hien -3877996
 		Frontend design for Splash screen, Login/Register, Chat box, Profile, Messages Adapter (display user), Chat Adapter (display conversation messages)
