@@ -366,12 +366,12 @@ public class MainActivity extends BackgroundActivity {
     }
 
     public void ongoing(View view){
-        startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));//change the activity name
+        startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));
         finish();
     }
 
     public void history(View view){
-        startActivity(new Intent(getApplicationContext(),OrderHistoryActivity.class));             //change the activity name
+        startActivity(new Intent(getApplicationContext(),OrderHistoryActivity.class));
         finish();
     }
 

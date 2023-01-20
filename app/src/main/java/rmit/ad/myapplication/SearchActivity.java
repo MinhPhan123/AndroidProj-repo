@@ -109,7 +109,7 @@ public class SearchActivity extends BackgroundActivity implements onClickInterfa
 
             if(filteredList.isEmpty())
             {
-                Toast.makeText(this,"No Data Found", Toast.LENGTH_SHORT).show();
+                Log.e("Searching", "Data Searching");
             }
             else {
                 productAdapter.setFilteredList(filteredList);

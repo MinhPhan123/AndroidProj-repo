@@ -151,7 +151,6 @@ public class ItemList extends BackgroundActivity implements onClickInterface{
         Item item = itemArrayList.get(position);
         Intent intent = new Intent(ItemList.this, ViewItemDetailActivity.class);
         intent.putExtra("item",item);
-        Toast.makeText(ItemList.this, "Position: " + position, Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }

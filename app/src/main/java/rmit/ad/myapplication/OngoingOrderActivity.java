@@ -35,8 +35,6 @@ public class OngoingOrderActivity extends BackgroundActivity {
 
     RecyclerView recyclerView;
     ImageView back;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser currUser = firebaseAuth.getCurrentUser();
@@ -47,14 +45,14 @@ public class OngoingOrderActivity extends BackgroundActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView = findViewById(R.id.orderHistoryRecycler);
+        setContentView(R.layout.activity_ongoing_order);
+
+        recyclerView = findViewById(R.id.ongoingRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ongoingItems = new ArrayList<Item>();
         ongoingAdapter = new OngoingAdapter(ongoingItems);
         recyclerView.setAdapter(ongoingAdapter);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
         db = FirebaseFirestore.getInstance();
 
 

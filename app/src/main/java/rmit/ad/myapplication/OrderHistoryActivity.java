@@ -31,8 +31,6 @@ public class OrderHistoryActivity extends BackgroundActivity {
 
     RecyclerView recyclerView;
     ImageView back;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
     OrderHistoryAdapter orderHistoryAdapter;
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -51,8 +49,6 @@ public class OrderHistoryActivity extends BackgroundActivity {
         historyItems = new ArrayList<Item>();
         orderHistoryAdapter = new OrderHistoryAdapter(historyItems);
         recyclerView.setAdapter(orderHistoryAdapter);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
         db = FirebaseFirestore.getInstance();
 
         //Set up displaying method while loading
