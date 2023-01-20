@@ -1,6 +1,7 @@
 package rmit.ad.myapplication.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 public void onClick(View view) {
                     DocumentReference documentReference = firestore.collection("Shopping Cart").document(currUser.getUid()).collection("Items").document(item.getID());
                     documentReference.delete();
+                    shoppingCart.remove(item);
+                    notifyDataSetChanged();
                 }
             });
         }

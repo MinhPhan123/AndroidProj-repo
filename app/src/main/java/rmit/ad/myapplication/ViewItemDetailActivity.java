@@ -80,7 +80,7 @@ public class ViewItemDetailActivity extends BackgroundActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Log.d("TAG", "onSuccess: item added to wishlist");
-                                Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into Wish List", Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into your wishlist", Toast.LENGTH_SHORT);
                                 toast.show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -183,7 +183,7 @@ public class ViewItemDetailActivity extends BackgroundActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("TAG", "onSuccess: item added to cart");
-                        Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into cart", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into your cart", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
