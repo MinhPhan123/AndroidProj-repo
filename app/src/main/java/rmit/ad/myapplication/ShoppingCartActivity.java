@@ -1,5 +1,7 @@
 package rmit.ad.myapplication;
 
+import static java.lang.String.valueOf;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.view.GravityCompat;
@@ -102,8 +104,9 @@ public class ShoppingCartActivity extends BackgroundActivity {
                                 price += i.getPrice();
                                 cartItems.add(i);
                             }
+
                             shoppingCartAdapter.notifyDataSetChanged();
-                            totalPrice.setText("$ " + String.valueOf(price));
+                            totalPrice.setText("$ " + String.format("%.2f",price));
                         }
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
