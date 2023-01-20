@@ -365,13 +365,14 @@ public class MainActivity extends BackgroundActivity {
         finish();
     }
 
+
     public void ongoing_order(View view){
         startActivity(new Intent(getApplicationContext(),OngoingOrderActivity.class));//change the activity name
         finish();
     }
 
     public void history(View view){
-        startActivity(new Intent(getApplicationContext(),OrderHistoryActivity.class));             //change the activity name
+        startActivity(new Intent(getApplicationContext(),OrderHistoryActivity.class));
         finish();
     }
 

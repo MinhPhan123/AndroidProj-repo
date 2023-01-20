@@ -28,11 +28,13 @@
             android:id="@+id/add_wishlist"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginTop="5dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/grey_icon_border"
             android:padding="8dp"
-            android:layout_margin="10dp"
             android:src="@drawable/heart" />
 
     </RelativeLayout>

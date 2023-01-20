@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -79,6 +80,8 @@ public class ViewItemDetailActivity extends BackgroundActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Log.d("TAG", "onSuccess: item added to wishlist");
+                                Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into Wish List", Toast.LENGTH_SHORT);
+                                toast.show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -179,7 +182,9 @@ public class ViewItemDetailActivity extends BackgroundActivity {
                 documentReference.set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Log.d("TAG", "onSuccess: item added to wishlist");
+                        Log.d("TAG", "onSuccess: item added to cart");
+                        Toast toast = Toast.makeText(getApplicationContext(), "Successfully added into cart", Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
